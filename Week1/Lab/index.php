@@ -59,7 +59,7 @@ if ( $util->isPostRequest() ) {
         }
     } else {
         //if no errors, save to to database.
-        $stmt = $db->prepare("INSERT INTO phonetype SET phonetype = :phonetype");  
+        $stmt = $db->prepare("INSERT INTO emailtype SET phonetype = :phonetype");  
         $values = array(":phonetype"=>$phoneType);
         if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
             echo 'Phone Added';
