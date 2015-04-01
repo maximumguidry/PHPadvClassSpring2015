@@ -33,12 +33,13 @@ $errors = array();
  * We setup this config to get a standard database setup for the page
  */
 $dbConfig = array(
-        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvancedclass2015',
         "DB_USER"=>'root',
         "DB_PASSWORD"=>''
         );
 $pdo = new DB($dbConfig);
 $db = $pdo->getDB();
+//var_dump($db);
 /*
  * we utilize our classes to have less code on the page
  * 
@@ -73,8 +74,6 @@ if ( $util->isPostRequest() ) {
     
 }
     
-        
-        
        
         ?>
         
@@ -96,11 +95,11 @@ if ( $util->isPostRequest() ) {
          * fetch which gets one row.
          */
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // results returns as a assoc array
-        // you can run the next line to see the variable
-        // var_dump($results)
+        //results returns as a assoc array
+        //you can run the next line to see the variable
+        //var_dump($results)
         foreach ($results as $value) {
-            echo '<p>', $value['emailtype'], '</p>';
+            echo '<p><strong>', $value['emailtype'], '</strong></p>';
         }
     } else {
         echo '<p>No Data</p>';
