@@ -26,7 +26,7 @@ $validator = new Validator();
  * 
  * When getting values from $_POST or $_GET use filter_input
  */
-$phoneType = filter_input(INPUT_POST, 'phonetype');
+$emailType = filter_input(INPUT_POST, 'txtEmailType');
 // We use errors to add issues to notify the user
 $errors = array();
 /*
@@ -45,8 +45,8 @@ $db = $pdo->getDB();
  */
 if ( $util->isPostRequest() ) {
     // we validate only if a post has been made
-    if ( !$validator->phoneTypeIsValid($phoneType) ) {
-        $errors[] = 'Phone type is not valid';
+    if ( !$validator->emailTypeIsValid($emailType) ) {
+        $errors[] = 'Email type is not valid';
     }
     
     
@@ -59,11 +59,15 @@ if ( $util->isPostRequest() ) {
         }
     } else {
         //if no errors, save to to database.
-        $stmt = $db->prepare("INSERT INTO emailtype SET phonetype = :phonetype");  
-        $values = array(":phonetype"=>$phoneType);
+        $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype"); 
+        $values = array(":emailtype"=>$emailType);
         if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
-            echo 'Phone Added';
-        }       
+            echo 'Email type Added';
+        }    
+        else
+        {
+            echo 'Email not Added';   
+        }
     }
     
     
@@ -74,10 +78,10 @@ if ( $util->isPostRequest() ) {
        
         ?>
         
-         <h3>Add phone type</h3>
+         <h3>Add Email type</h3>
         <form action="#" method="post">
-            <label>Phone Type:</label> 
-            <input type="text" name="phonetype" value="<?php echo $phoneType; ?>" placeholder="" />
+            <label>Email Type:</label> 
+            <input type="text" name="txtEmailType" value="<?php echo $emailType; ?>" placeholder="" />
             <input type="submit" value="Submit" />
         </form>
          
@@ -85,7 +89,7 @@ if ( $util->isPostRequest() ) {
     <?php 
        
     // lets get the database values and display them
-    $stmt = $db->prepare("SELECT * FROM phonetype where active = 1");
+    $stmt = $db->prepare("SELECT * FROM emailtype where active = 1");
     if ($stmt->execute() && $stmt->rowCount() > 0) {
         /*
          * There is fetchAll which gets all the values and
@@ -96,7 +100,7 @@ if ( $util->isPostRequest() ) {
         // you can run the next line to see the variable
         // var_dump($results)
         foreach ($results as $value) {
-            echo '<p>', $value['phonetype'], '</p>';
+            echo '<p>', $value['emailtype'], '</p>';
         }
     } else {
         echo '<p>No Data</p>';
