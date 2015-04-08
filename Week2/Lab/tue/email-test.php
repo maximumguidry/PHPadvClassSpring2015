@@ -23,10 +23,10 @@
         $active = filter_input(INPUT_POST, 'active');
         
         
-         $phoneTypeDAO = new PhoneTypeDAO($db);
-         $phoneDAO = new PhoneDAO($db);
+         $emailTypeDAO = new EmailTypeDAO($db);
+         $emailDAO = new EmailDAO($db);
          
-         $phoneTypes = $phoneTypeDAO->getAllRows();
+         $emailTypes = $emailTypeDAO->getAllRows();
         
          $util = new Util();
          
@@ -34,16 +34,16 @@
                             
                $validator = new Validator(); 
                 $errors = array();
-                if( !$validator->phoneIsValid($phone) ) {
-                    $errors[] = 'Phone is invalid';
+                if( !$validator->emailIsValid($email) ) {
+                    $errors[] = 'Email is invalid';
                 } 
                 
                 if ( !$validator->activeIsValid($active) ) {
                      $errors[] = 'Active is invalid';
                 }
                 
-                if ( empty($phoneTypeid) ) {
-                     $errors[] = 'Phone type is invalid';
+                if ( empty($emailTypeid) ) {
+                     $errors[] = 'Email type is invalid';
                 }
                 
                 
@@ -55,15 +55,15 @@
                 } else {
                     
                     
-                    $phoneModel = new PhoneModel();
+                    $emailModel = new EmailModel();
                     
-                    $phoneModel->map(filter_input_array(INPUT_POST));
+                    $emailModel->map(filter_input_array(INPUT_POST));
                     
                    // var_dump($phonetypeModel);
-                    if ( $phoneDAO->save($phoneModel) ) {
-                        echo 'Phone Added';
+                    if ( $emailDAO->save($emailModel) ) {
+                        echo 'Email Added';
                     } else {
-                        echo 'Phone not added';
+                        echo 'Email not added';
                     }
                     
                 }

@@ -18,15 +18,15 @@ class EmailTypeService {
     private $_DB;
     private $_Validator;
     private $_EmailTypeDAO;
-    private $_PhonetypeModel;
+    private $_EmailTypeModel;
 
 
-    public function __construct($db, $util, $validator, $phoneTypeDAO, $phonetypeModel) {
+    public function __construct($db, $util, $validator, $emailTypeDAO, $emailtypeModel) {
         $this->_DB = $db;    
         $this->_Util = $util;
         $this->_Validator = $validator;
-        $this->_PhoneTypeDAO = $phoneTypeDAO;
-        $this->_PhoneTypeModel = $phonetypeModel;
+        $this->_EmailTypeDAO = $emailTypeDAO;
+        $this->_EmailTypeModel = $emailtypeModel;
     }
 
 
@@ -41,10 +41,10 @@ class EmailTypeService {
             $this->displayErrors();
         } else {
             
-            if (  $this->_PhoneTypeDAO->save($this->_PhoneTypeModel) ) {
-                echo 'Phone Added';
+            if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
+                echo 'Email Added';
             } else {
-                echo 'Phone could not be added Added';
+                echo 'Email could not be added Added';
             }
            
         }
@@ -54,10 +54,10 @@ class EmailTypeService {
        
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
-            if( !$this->_Validator->phoneTypeIsValid($this->_PhoneTypeModel->getPhonetype()) ) {
-                 $this->_errors[] = 'Phone Type is invalid';
+            if( !$this->_Validator->phoneTypeIsValid($this->_EmailTypeModel->getPhonetype()) ) {
+                 $this->_errors[] = 'Email Type is invalid';
             } 
-            if( !$this->_Validator->activeIsValid($this->_PhoneTypeModel->getActive()) ) {
+            if( !$this->_Validator->activeIsValid($this->_EmailTypeModel->getActive()) ) {
                  $this->_errors[] = 'Active is invalid';
             } 
         }
@@ -78,16 +78,16 @@ class EmailTypeService {
     }
 
 
-    public function displayPhones() {        
+    public function displayEmails() {        
        
-        $stmt = $this->_DB->prepare("SELECT * FROM phonetype");
+        $stmt = $this->_DB->prepare("SELECT * FROM emailtype");
 
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
            
             foreach ($results as $value) {
-                echo '<p>', $value['phonetype'], '</p>';
+                echo '<p>', $value['emailtype'], '</p>';
             }
         } else {
             echo '<p>No Data</p>';
