@@ -1,6 +1,5 @@
 <?php
 /**
- * Description of PhoneTypeDAO
  * 
  * DAO = Data Access Object
  * 
@@ -104,7 +103,7 @@ class EmailTypeDAO implements IDAO {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($results as $value) {
-               $model = new PhoneTypeModel();
+               $model = new EmailTypeModel();
                $model->reset()->map($value);
                $values[] = $model;
             }

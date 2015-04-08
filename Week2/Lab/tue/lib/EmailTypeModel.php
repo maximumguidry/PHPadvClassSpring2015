@@ -38,7 +38,7 @@ class EmailTypeModel implements IModel {
         }
     }
 
-    function setPhonetype($emailtype) {
+    function setEmailtype($emailtype) {
         $this->emailtype = $emailtype;
     }
 

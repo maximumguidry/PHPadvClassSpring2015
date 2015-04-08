@@ -54,7 +54,7 @@ class EmailTypeService {
        
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
-            if( !$this->_Validator->phoneTypeIsValid($this->_EmailTypeModel->getPhonetype()) ) {
+            if( !$this->_Validator->emailTypeIsValid($this->_EmailTypeModel->getEmailtype()) ) {
                  $this->_errors[] = 'Email Type is invalid';
             } 
             if( !$this->_Validator->activeIsValid($this->_EmailTypeModel->getActive()) ) {

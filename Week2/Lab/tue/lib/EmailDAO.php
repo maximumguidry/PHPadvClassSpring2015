@@ -47,10 +47,10 @@ class EmailDAO implements IDAO {
          $model = new EmailModel(); // this creates a dependacy, how can we fix this
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT phone.phoneid, phone.phone, phone.phonetypeid, phonetype.phonetype, phonetype.active as phonetypeactive, phone.logged, phone.lastupdated, phone.active"
-                 . " FROM phone LEFT JOIN phonetype on phone.phonetypeid = phonetype.phonetypeid WHERE phoneid = :phoneid");
+         $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
+                 . " FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid WHERE emailid = :emailid");
          
-         if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
+         if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
              $model->map($results);
          }
@@ -63,18 +63,18 @@ class EmailDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $values = array( ":phone" => $model->getPhone(),
+         $values = array( ":email" => $model->getEmail(),
                           ":active" => $model->getActive(),
-                          ":phonetypeid" => $model->getPhonetypeid(),
+                          ":emailtypeid" => $model->getEmailtypeid(),
              
                     );
          
                 
-         if ( $this->idExisit($model->getPhoneid()) ) {
-             $values[":phoneid"] = $model->getPhoneid();
-             $stmt = $db->prepare("UPDATE phone SET phone = :phone, phonetypeid = :phonetypeid,  active = :active, lastupdated = now() WHERE phoneid = :phoneid");
+         if ( $this->idExisit($model->getEmailid()) ) {
+             $values[":emailid"] = $model->getEmailid();
+             $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid,  active = :active, lastupdated = now() WHERE emailid = :emailid");
          } else {             
-             $stmt = $db->prepare("INSERT INTO phone SET phone = :phone, phonetypeid = :phonetypeid, active = :active, logged = now(), lastupdated = now()");
+             $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
          }
          
           
@@ -89,9 +89,9 @@ class EmailDAO implements IDAO {
     public function delete($id) {
           
          $db = $this->getDB();         
-         $stmt = $db->prepare("Delete FROM phone WHERE phoneid = :phoneid");
+         $stmt = $db->prepare("Delete FROM email WHERE emailid = :emailid");
          
-         if ( $stmt->execute(array(':phoneid' => $id)) && $stmt->rowCount() > 0 ) {
+         if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
              return true;
          }
          
@@ -104,14 +104,14 @@ class EmailDAO implements IDAO {
        
         $values = array();         
         $db = $this->getDB();               
-        $stmt = $db->prepare("SELECT phone.phoneid, phone.phone, phone.phonetypeid, phonetype.phonetype, phonetype.active as phonetypeactive, phone.logged, phone.lastupdated, phone.active"
-                 . " FROM phone LEFT JOIN phonetype on phone.phonetypeid = phonetype.phonetypeid");
+        $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
+                 . " FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid");
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($results as $value) {
-               $model = new PhoneModel();
+               $model = new EmailModel();
                $model->reset()->map($value);
                $values[] = $model;
             }
