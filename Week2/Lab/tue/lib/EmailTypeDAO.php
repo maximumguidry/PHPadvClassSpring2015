@@ -96,10 +96,12 @@ class EmailTypeDAO implements IDAO {
     public function getAllRows() {
        
         $values = array();         
-        $db = $this->getDB();               
+        $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM emailtype");
+        //echo(var_dump($db));
+        //echo(var_dump($stmt));
         
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        if ($stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($results as $value) {

@@ -106,7 +106,7 @@ class EmailDAO implements IDAO {
         $db = $this->getDB();               
         $stmt = $db->prepare("SELECT email.emailid, email.email, email.emailtypeid, emailtype.emailtype, emailtype.active as emailtypeactive, email.logged, email.lastupdated, email.active"
                  . " FROM email LEFT JOIN emailtype on email.emailtypeid = emailtype.emailtypeid");
-        
+        //echo(var_dump($stmt));
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
