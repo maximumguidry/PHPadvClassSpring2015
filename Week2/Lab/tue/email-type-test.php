@@ -9,7 +9,7 @@
         <?php
         
         $dbConfig = array(
-            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvancedclass2015',
             "DB_USER"=>'root',
             "DB_PASSWORD"=>''
         );
@@ -49,11 +49,11 @@
                                        
                     $emailtypeModel = new EmailTypeModel();
                     $emailtypeModel->setActive($active);
-                    $emailtypeModel->setPhonetype($phoneType);
+                    $emailtypeModel->setEmailtype($emailType);
                     
                    // var_dump($phonetypeModel);
                     if ( $emailTypeDAO->save($emailtypeModel) ) {
-                        echo 'Email Added';
+                        echo 'Email Type Added';
                     }
                     
                                

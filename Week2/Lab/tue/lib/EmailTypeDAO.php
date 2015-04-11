@@ -15,17 +15,18 @@ class EmailTypeDAO implements IDAO {
     
     private $DB = null;
 
-    public function __construct( PDO $db ) {        
+    public function __construct( PDO $db) {        
         $this->setDB($db);    
+    }
+    
+    private function getDB() {
+        return $this->DB;
     }
     
     private function setDB( PDO $DB) {        
         $this->DB = $DB;
     }
     
-    private function getDB() {
-        return $this->DB;
-    }
     
     public function idExisit($id) {
         
@@ -98,8 +99,6 @@ class EmailTypeDAO implements IDAO {
         $values = array();         
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM emailtype");
-        //echo(var_dump($db));
-        //echo(var_dump($stmt));
         
         if ($stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
