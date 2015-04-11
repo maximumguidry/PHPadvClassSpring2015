@@ -14,26 +14,28 @@
             "DB_PASSWORD"=>''
         );
         
-        $pdo = new DB($dbConfig);
-        $db = $pdo->getDB();
-        $id = $_GET['id'];
-
-        $emailTypeDAO = new EmailTypeDAO($db);
-        $emailDAO = new EmailDAO($db);
-         
-         
-         
-         
-         //$emailTypes = $emailTypeDAO->getAllRows();
         
-         $util = new Util();
+        try {
+            
+            $pdo = new DB($dbConfig);
+            $db = $pdo->getDB();
+        } 
+        
+        catch (Exception $ex) {
+            
+            echo $ex->getMessage();
+        }
+        
+        $id = filter_input(INPUT_GET, 'id');
+        //echo var_dump($db);
+        
+        $emailDAO = new EmailDAO($db);
+        
+        //echo var_dump($emailDAO);
          
-          if ( $util->isGetRequest() ) {
-                            
-              $isDeleted = $emailDAO->delete($id);
-              echo(var_dump($isDeleted));
-                    
-          }
+        //$emailTypes = $emailTypeDAO->getAllRows();
+
+
 ?>
         <h3>Email Delete</h3>
         <?php

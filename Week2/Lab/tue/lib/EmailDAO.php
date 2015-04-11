@@ -94,7 +94,6 @@ class EmailDAO implements IDAO {
          if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
              return true;
          }
-         echo var_dump($stmt);
          return false;
     }
      
