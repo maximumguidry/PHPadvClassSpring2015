@@ -7,47 +7,50 @@
     </head>
     <body>
         <?php
-        
+                
         $dbConfig = array(
-            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvclassspring2015',
             "DB_USER"=>'root',
             "DB_PASSWORD"=>''
         );
-        $pdo = new DB($dbConfig);
-        $db = $pdo->getDB();
-       
-        $util = new Util();
-        $validator = new Validator();
-        $emailTypeDAO = new EmailTypeDAO($db);
-        $emailTypeModel = new EmailTypeModel();
-         
-        if ( $util->isPostRequest() ) {
+        
+        
+        try {
             
-            $emailtypeModel->map(filter_input_array(INPUT_POST));
-                       
-        } else {
-            $emailtypeid = filter_input(INPUT_GET, 'emailtypeid');
-            $emailtypeModel = $emailTypeDAO->getById($emailtypeid);
+            $pdo = new DB($dbConfig);
+            $db = $pdo->getDB();
+        } 
+        
+        catch (Exception $ex) {
+            
+            echo $ex->getMessage();
         }
         
+        $id = filter_input(INPUT_GET, 'id');
+        //echo var_dump($db);
         
-        $emailtypeid = $emailtypeModel->getEmailtypeid();
-        $emailType = $emailtypeModel->getEmailtype();
-        $active = $emailTypeModel->getActive();  
-              
+        $emailDAO = new EmailDAO($db);
         
-        $emailTypeService = new EmailTypeService($db, $util, $validator, $emailTypeDAO, $emailtypeModel);
-        
-        if ( $emailTypeDAO->idExisit($emailtypeModel->getEmailtypeid()) ) {
-            $emailTypeService->saveForm();
-        }
-        
-        
+        //echo var_dump($emailDAO);
+         
+        //$emailTypes = $emailTypeDAO->getAllRows();
+
+
+?>
+        <h3>Email Delete</h3>
+        <?php
+            if($emailDAO->delete($id))
+            {
+                echo '<p>Email deleted at record number ',$id,'</p>';
+            }
+            else
+            {
+                echo '<p>No records deleted.</p>';
+            }
         ?>
         
         
-         <h3>Email Delete</h3>
-         <?php
-            
-         ?>
+    </body>
+    
 </html>
+          
