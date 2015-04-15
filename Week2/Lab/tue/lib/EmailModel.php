@@ -1,16 +1,5 @@
 <?php
-/**
- * PhoneModel
- * 
- * The idea of the model(Data Object) is to provide an object the reflects your
- * table in your database.  Notice all the private variables are the colums from
- * the table in our database.
- * 
- * One word of advise, keep all table names in your models class lowercase.  When creating 
- * getter and setter functions it will camel case (Java Style) your functions.
- *
- * @author User
- */
+
 class EmailModel implements IModel {
     
     private $emailid;
@@ -91,37 +80,31 @@ class EmailModel implements IModel {
         $this->setLogged('');
         $this->setLastupdated('');
         $this->setActive('');
+        $this->setEmailtype('');
         return $this;
     }
     
     
    
     public function map(array $values) {
-        
         if ( array_key_exists('emailid', $values) ) {
             $this->setEmailid($values['emailid']);
         }
-        
         if ( array_key_exists('email', $values) ) {
             $this->setEmail($values['email']);
         }
-        
         if ( array_key_exists('emailtypeid', $values) ) {
             $this->setEmailtypeid($values['emailtypeid']);
         }
-        
         if ( array_key_exists('logged', $values) ) {
             $this->setLogged($values['logged']);
         }
-        
         if ( array_key_exists('lastupdated', $values) ) {
             $this->setLastupdated($values['lastupdated']);
         }
-        
         if ( array_key_exists('active', $values) ) {
             $this->setActive($values['active']);
         }
-        
         if ( array_key_exists('emailtype', $values))
         {
             $this->setEmailtype($values['emailtype']);        
