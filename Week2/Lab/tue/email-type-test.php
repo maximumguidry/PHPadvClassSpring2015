@@ -9,7 +9,7 @@
         <?php
         
         $dbConfig = array(
-            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvancedclass2015',
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
             "DB_USER"=>'root',
             "DB_PASSWORD"=>''
         );
@@ -80,15 +80,16 @@
          
          <?php         
              
-            $emailTypes = $emailTypeDAO->getAllRows();
             
            /* echo $phoneTypes[0]->getPhonetype();
             echo $phoneTypes[1]->getPhonetype();
             echo $phoneTypes[2]->getPhonetype();
+            * 
+            * Foreach that displays all of the emailtypes
             */
-            foreach ($emailTypes as $value) {
-                echo '<p>',$value->getEmailtype(),'</p>';
-            }
+//            foreach ($emailTypes as $value) {
+//                echo '<p>',$value->getEmailtype(),'</p>';
+//            }
             
            // var_dump($phoneTypes);
             
@@ -109,7 +110,25 @@
              */
             
          ?>
-         
+         <table border="1" cellpadding="5">
+                <tr>
+                    <th>Email</th>
+                    <th>Email Type</th>
+                    <th>Last updated</th>
+                    <th>Logged</th>
+                    <th>Active</th>
+                    <th></th>
+                </tr>
+         <?php 
+            $emailtypes = $emailtypeDAO->getAllRows(); 
+            foreach ($emailtype as $value) {
+                echo '<tr><td>',$value->getEmailType(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
+                echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td><td><a href="email-delete.php?id=',$value->getEmailid(),'">Delete</a></td></tr>' ;
+                
+            }
+
+         ?>
+            </table>
          
     </body>
 </html>
