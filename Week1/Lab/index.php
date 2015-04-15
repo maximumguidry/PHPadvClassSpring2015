@@ -21,18 +21,17 @@ and open the template in the editor.
          */
 $util = new Util();
 $validator = new Validator();
+//instance of emailTypeDB class
 $emailTypeDB = new EmailTypeDB();
-/*
- * When dealing with forms always collect the data before trying to validate
- * 
- * When getting values from $_POST or $_GET use filter_input
- */
+
+
 $emailType = filter_input(INPUT_POST, 'txtEmailType');
 // We use errors to add issues to notify the user
 $errors = array();
 /*
  * We setup this config to get a standard database setup for the page
  */
+//Now I am using the correct database name
 $dbConfig = array(
         "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvclassspring2015',
         "DB_USER"=>'root',
@@ -82,9 +81,12 @@ if ( $util->isPostRequest() ) {
          
          
     <?php 
+        //here is my reference to the class-based function
        $results = $emailTypeDB->getAllRows();
+       //outputs the rows in the database
     foreach ($results as $value) 
         {
+            //only displays the email types in bold if active
             if($value['active']== "1")
             {
                 echo '<p><strong>', $value['emailtype'], '</strong></p>';
