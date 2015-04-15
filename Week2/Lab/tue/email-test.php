@@ -106,13 +106,15 @@
                     <th>Last updated</th>
                     <th>Logged</th>
                     <th>Active</th>
-                    <th></th>
+                    <th>Delete</th>
+                    <th>Update</th>
                 </tr>
          <?php 
             $emails = $emailDAO->getAllRows(); 
             foreach ($emails as $value) {
                 echo '<tr><td>',$value->getEmail(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
-                echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td><td><a href="email-delete.php?id=',$value->getEmailid(),'">Delete</a></td></tr>' ;
+                echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td><td><a href="email-delete.php?id=',$value->getEmailid(),'">Delete</a></td>',
+                        '<td><a href="email-update.php?id=',$value->getEmailid(),'">Update</a></td>','</tr>' ;
                 
             }
 
