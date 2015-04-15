@@ -21,6 +21,7 @@ and open the template in the editor.
          */
 $util = new Util();
 $validator = new Validator();
+$emailTypeDB = new EmailTypeDB();
 /*
  * When dealing with forms always collect the data before trying to validate
  * 
@@ -33,7 +34,7 @@ $errors = array();
  * We setup this config to get a standard database setup for the page
  */
 $dbConfig = array(
-        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvancedclass2015',
+        "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvclassspring2015',
         "DB_USER"=>'root',
         "DB_PASSWORD"=>''
         );
@@ -60,15 +61,10 @@ if ( $util->isPostRequest() ) {
         }
     } else {
         //if no errors, save to to database.
-        $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype"); 
-        $values = array(":emailtype"=>$emailType);
-        if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
-            echo 'Email type Added';
-        }    
-        else
-        {
-            echo 'Email not Added';   
-        }
+        //calling the saveAnEmailType function
+        $emailTypeDB->saveAnEmailType($emailType);
+        
+        
     }
     
     
@@ -86,24 +82,26 @@ if ( $util->isPostRequest() ) {
          
          
     <?php 
-       
-    // lets get the database values and display them
-    $stmt = $db->prepare("SELECT * FROM emailtype where active = 1");
-    if ($stmt->execute() && $stmt->rowCount() > 0) {
-        /*
-         * There is fetchAll which gets all the values and
-         * fetch which gets one row.
-         */
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //results returns as a assoc array
-        //you can run the next line to see the variable
-        //var_dump($results)
-        foreach ($results as $value) {
+       $results = $emailTypeDB->getAllRows();
+    foreach ($results as $value) {
             echo '<p><strong>', $value['emailtype'], '</strong></p>';
         }
-    } else {
-        echo '<p>No Data</p>';
-    }
+    
+//    // lets get the database values and display them
+//    $stmt = $db->prepare("SELECT * FROM emailtype where active = 1");
+//    if ($stmt->execute() && $stmt->rowCount() > 0) {
+//        /*
+//         * There is fetchAll which gets all the values and
+//         * fetch which gets one row.
+//         */
+//        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//        //results returns as a assoc array
+//        //you can run the next line to see the variable
+//        //var_dump($results)
+//        
+//    } else {
+//        echo '<p>No Data</p>';
+//    }
     ?>
          
          
