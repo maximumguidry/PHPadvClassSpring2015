@@ -62,21 +62,20 @@ class EmailDAO implements IDAO {
     public function save(IModel $model) {
                  
          $db = $this->getDB();
-         
+         echo var_dump($db);
          $values = array( ":email" => $model->getEmail(),
                           ":active" => $model->getActive(),
-                          ":emailtypeid" => $model->getEmailtypeid(),
+                          ":emailtype" => $model->getEmailtype(),
              
                     );
-         
                 
          if ( $this->idExisit($model->getEmailid()) ) {
              $values[":emailid"] = $model->getEmailid();
-             $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid,  active = :active, lastupdated = now() WHERE emailid = :emailid");
+             $stmt = $db->prepare("UPDATE email SET email = :email, emailtype = :emailtype,  active = :active, lastupdated = now() WHERE emailid = :emailid");
          } else {             
-             $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
+             $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtype = :emailtype, active = :active, logged = now(), lastupdated = now()");
          }
-         
+         echo var_dump($db);
           
          if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
             return true;
