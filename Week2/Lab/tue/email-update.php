@@ -30,7 +30,6 @@
             
             $emailModel->map(filter_input_array(INPUT_POST));
             $emailModel->setEmailid($emailid);
-            echo var_dump($emailModel);
             if($emailDAO->save($emailModel))
             {
                 echo "Record updated!";
@@ -74,13 +73,13 @@
             <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" />
             <br /><br />
             <label>Email Type:</label>
-            <select name="emailtype">
+            <select name="emailtypeid">
             <?php 
                 foreach ($emailTypes as $value) {
                     if ( $value->getEmailtypeid() == $emailTypeid ) {
-                        echo '<option value="',$value->getEmailtype(),'" selected="selected">',$value->getEmailtype(),'</option>';  
+                        echo '<option value="',$value->getEmailtypeid(),'" selected="selected">',$value->getEmailtype(),'</option>';  
                     } else {
-                        echo '<option value="',$value->getEmailtype(),'">',$value->getEmailtype(),'</option>';
+                        echo '<option value="',$value->getEmailtypeid(),'">',$value->getEmailtype(),'</option>';
                     }
                 }
             ?>

@@ -62,20 +62,20 @@ class EmailDAO implements IDAO {
     public function save(IModel $model) {
                  
          $db = $this->getDB();
-         echo var_dump($db);
+         
          $values = array( ":email" => $model->getEmail(),
                           ":active" => $model->getActive(),
-                          ":emailtype" => $model->getEmailtype(),
+                          ":emailtypeid" => $model->getEmailtypeid(),
              
                     );
                 
          if ( $this->idExisit($model->getEmailid()) ) {
              $values[":emailid"] = $model->getEmailid();
-             $stmt = $db->prepare("UPDATE email SET email = :email, emailtype = :emailtype,  active = :active, lastupdated = now() WHERE emailid = :emailid");
-         } else {             
-             $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtype = :emailtype, active = :active, logged = now(), lastupdated = now()");
+             $stmt = $db->prepare("UPDATE email SET email = :email, emailtypeid = :emailtypeid,  active = :active, lastupdated = now() WHERE emailid = :emailid");
+         } else {    
+             $stmt = $db->prepare("INSERT INTO email SET email = :email, emailtypeid = :emailtypeid, active = :active, logged = now(), lastupdated = now()");
          }
-         echo var_dump($db);
+         
           
          if ( $stmt->execute($values) && $stmt->rowCount() > 0 ) {
             return true;
@@ -87,7 +87,7 @@ class EmailDAO implements IDAO {
     
     public function delete($id) {
           
-         $db = $this->getDB();         
+         $db = $this->getDB();  
          $stmt = $db->prepare("Delete FROM email WHERE emailid = :emailid");
          
          if ( $stmt->execute(array(':emailid' => $id)) && $stmt->rowCount() > 0 ) {
