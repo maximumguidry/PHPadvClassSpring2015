@@ -41,7 +41,7 @@
             );
             $pdo = new DB($dbConfig);
             $db = $pdo->getDB();
-            $stmt = $db->prepare("SELECT * FROM emailtype where active = 1");
+            $stmt = $db->prepare("SELECT * FROM emailtype");
             if ($stmt->execute() && $stmt->rowCount() > 0) {
                 /*
                  * There is fetchAll which gets all the values and

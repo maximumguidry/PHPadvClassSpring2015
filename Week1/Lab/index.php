@@ -83,9 +83,18 @@ if ( $util->isPostRequest() ) {
          
     <?php 
        $results = $emailTypeDB->getAllRows();
-    foreach ($results as $value) {
-            echo '<p><strong>', $value['emailtype'], '</strong></p>';
+    foreach ($results as $value) 
+        {
+            if($value['active']== "1")
+            {
+                echo '<p><strong>', $value['emailtype'], '</strong></p>';
+            }
+            else
+            {
+                echo '<p>', $value['emailtype'], '</p>';  
+            }
         }
+//        echo(var_dump($results));
     
 //    // lets get the database values and display them
 //    $stmt = $db->prepare("SELECT * FROM emailtype where active = 1");
