@@ -19,7 +19,10 @@
         $util = new Util();
         $validator = new Validator();
         $emailDAO = new EmailDAO($db);
+        $emailTypeDAO = new EmailTypeDAO($db);
         $emailModel = new EmailModel();
+        
+        $emailTypes = $emailTypeDAO->getAllRows();
          
         if ( $util->isPostRequest() ) {
             
@@ -36,7 +39,9 @@
         
         $emailid = $emailModel->getEmailid();
         $email = $emailModel->getEmail();
-        $emailType = $emailModel->getEmailtype();  
+        $emailType = $emailModel->getEmailtype(); 
+        $emailTypeid = $emailModel->getEmailtypeid();
+        $active = $emailModel->getActive();
               
         
         $emailService = new EmailService($db, $util, $validator, $emailDAO, $emailModel);
@@ -56,8 +61,24 @@
             <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" />
             <br /><br />
             <label>Email Type:</label>
-            <input type="text" name="emailType" value="<?php echo $emailType; ?>" />
-             <br /><br />
+            <select name="emailtypeid">
+            <?php 
+                foreach ($emailTypes as $value) {
+                    if ( $value->getEmailtypeid() == $emailTypeid ) {
+                        echo '<option value="',$value->getEmailtypeid(),'" selected="selected">',$value->getEmailtype(),'</option>';  
+                    } else {
+                        echo '<option value="',$value->getEmailtypeid(),'">',$value->getEmailtype(),'</option>';
+                    }
+                }
+            ?>
+            </select>
+            <br /><br />
+            <label>Active:</label>
+            <input type="number" max="1" min="0" name="active" value="<?php echo $active; ?>" />
+            <br /><br />
+            
+            
+            
             <input type="submit" value="Submit" />
         </form>
          

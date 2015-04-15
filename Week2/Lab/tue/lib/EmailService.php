@@ -106,18 +106,17 @@ class EmailService {
         else {
             
             
-             echo '<table border="1" cellpadding="5"><tr><th>Email</th><th>Active</th><th></th><th></th></tr>';
+             echo '<table border="1" cellpadding="5"><tr><th>Email</th><th>Email Type</th><th>Active</th><th></th><th></th></tr>';
              foreach ($emails as $value) {
                 echo '<tr>';
                 echo '<td>', $value->getEmail(),'</td>';
                 echo '<td>', ($value->getEmailType()) ,'</td>';
+                echo '<td>', ($value->getActive()) ,'</td>';
                 echo '<td><a href=email-update.php?id=',$value->getEmailid(),'>Update</a></td>';
                 echo '<td><a href=email-delete.php?id=',$value->getEmailid(),'>Delete</a></td>';
                 echo '</tr>' ;
             }
             echo '</table>';
-            echo var_dump($value);
-            echo var_dump($emails);
             
         }
     }
