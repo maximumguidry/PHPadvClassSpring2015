@@ -1,5 +1,6 @@
 <?php
-//namespace bguidry\week2;
+namespace bguidry\week2;
+use PDO;
 /**
  * PhoneDAO
  * 

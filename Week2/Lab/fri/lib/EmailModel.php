@@ -1,5 +1,5 @@
 <?php
-//namespace bguidry\week2;
+namespace bguidry\week2;
 
 class EmailModel implements IModel {
     

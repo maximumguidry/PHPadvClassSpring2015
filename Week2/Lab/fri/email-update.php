@@ -1,5 +1,5 @@
 <?php 
-//namespace tue\lib;
+namespace bguidry\week2;
 include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>

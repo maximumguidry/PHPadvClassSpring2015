@@ -1,5 +1,6 @@
 <?php
-//namespace bguidry\week2;
+namespace bguidry\week2;
+use PDO;
 /**
  * DB is the general class to connection to our database
  *
