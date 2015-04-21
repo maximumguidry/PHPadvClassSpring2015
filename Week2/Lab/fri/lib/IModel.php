@@ -1,5 +1,5 @@
 <?php
-
+//namespace bguidry\week2;
 /**
  * Interface for Database Model (Object)
  * 

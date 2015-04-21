@@ -1,4 +1,5 @@
 <?php
+//namespace bguidry\week2;
 /**
  * 
  * DAO = Data Access Object

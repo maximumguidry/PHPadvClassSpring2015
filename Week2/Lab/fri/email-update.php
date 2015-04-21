@@ -1,4 +1,6 @@
-<?php include './bootstrap.php'; ?>
+<?php 
+//namespace tue\lib;
+include './bootstrap.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +9,6 @@
     </head>
     <body>
         <?php
-        
         $dbConfig = array(
             "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
             "DB_USER"=>'root',

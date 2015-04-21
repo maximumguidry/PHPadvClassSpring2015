@@ -1,5 +1,5 @@
 <?php
-
+//namespace bguidry\week2;
 /**
  * DB is the general class to connection to our database
  *

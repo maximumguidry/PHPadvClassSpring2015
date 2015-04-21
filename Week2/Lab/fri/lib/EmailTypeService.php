@@ -1,5 +1,5 @@
 <?php
-
+//namespace bguidry\week2;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,22 +11,22 @@
  *
  * @author User
  */
-class EmailService {
+class EmailTypeService {
    
     private $_errors = array();
     private $_Util;
     private $_DB;
     private $_Validator;
-    private $_EmailDAO;
-    private $_EmailModel;
+    private $_EmailTypeDAO;
+    private $_EmailTypeModel;
 
 
-    public function __construct($db, $util, $validator, $emailDAO, $emailModel) {
+    public function __construct($db, $util, $validator, $emailTypeDAO, $emailtypeModel) {
         $this->_DB = $db;    
         $this->_Util = $util;
         $this->_Validator = $validator;
-        $this->_EmailDAO = $emailDAO;
-        $this->_EmailModel = $emailModel;
+        $this->_EmailTypeDAO = $emailTypeDAO;
+        $this->_EmailTypeModel = $emailtypeModel;
     }
 
 
@@ -41,7 +41,7 @@ class EmailService {
             $this->displayErrors();
         } else {
             
-            if (  $this->_EmailDAO->save($this->_EmailModel) ) {
+            if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
                 echo 'Email Added';
             } else {
                 echo 'Email could not be added Added';
@@ -54,11 +54,11 @@ class EmailService {
        
         if ( $this->_Util->isPostRequest() ) {                
             $this->_errors = array();
-            if( !$this->_Validator->emailIsValid($this->_EmailModel->getEmail()) ) {
-                 $this->_errors[] = 'Email is invalid';
+            if( !$this->_Validator->emailTypeIsValid($this->_EmailTypeModel->getEmailtype()) ) {
+                 $this->_errors[] = 'Email Type is invalid';
             } 
-            if( !$this->_Validator->emailTypeIsValid($this->_EmailModel->getEmailtype()) ) {
-                 $this->_errors[] = 'Email type is invalid';
+            if( !$this->_Validator->activeIsValid($this->_EmailTypeModel->getActive()) ) {
+                 $this->_errors[] = 'Active is invalid';
             } 
         }
          
@@ -80,14 +80,14 @@ class EmailService {
 
     public function displayEmails() {        
        
-        $stmt = $this->_DB->prepare("SELECT * FROM email");
+        $stmt = $this->_DB->prepare("SELECT * FROM emailtype");
 
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
            
             foreach ($results as $value) {
-                echo '<p>', $value['email'], '</p>';
+                echo '<p>', $value['emailtype'], '</p>';
             }
         } else {
             echo '<p>No Data</p>';
@@ -95,30 +95,5 @@ class EmailService {
         
     }
     
-    public function displayEmailsActions() {        
-       // Notice in the previous function I should have called get all rows
-        
-        $emails = $this->_EmailDAO->getAllRows();
-        
-        if ( count($emails) <= 0 ) {
-            echo '<p>No Data</p>';
-        } 
-        else {
-            
-            
-             echo '<table border="1" cellpadding="5"><tr><th>Email</th><th>Email Type</th><th>Active</th><th></th><th></th></tr>';
-             foreach ($emails as $value) {
-                echo '<tr>';
-                echo '<td>', $value->getEmail(),'</td>';
-                echo '<td>', ($value->getEmailType()) ,'</td>';
-                echo '<td>', ($value->getActive()) ,'</td>';
-                echo '<td><a href=email-update.php?id=',$value->getEmailid(),'>Update</a></td>';
-                echo '<td><a href=email-delete.php?id=',$value->getEmailid(),'>Delete</a></td>';
-                echo '</tr>' ;
-            }
-            echo '</table>';
-            
-        }
-    }
     
 }
