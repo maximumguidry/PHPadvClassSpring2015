@@ -37,7 +37,7 @@ and open the template in the editor.
         ?>
         
         
-         <h3>Add phone type</h3>
+        <h3>Add phone type</h3>
         <form action="#" method="post">
             <label>Phone Type:</label> 
             <input type="text" name="phonetype" value="<?php echo $phoneType; ?>" placeholder="" />

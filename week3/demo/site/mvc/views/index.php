@@ -16,5 +16,6 @@
         
         <a href="phonetype">Phone Type</a>
         <a href="phone">Phone</a>
+        <a href="emailtype">Email Type</a>
     </body>
 </html>

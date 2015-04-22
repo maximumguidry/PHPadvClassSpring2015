@@ -1,6 +1,5 @@
 <?php
 namespace App\models\services;
-use App\models\interfaces\IModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,46 +11,34 @@ use App\models\interfaces\IModel;
  *
  * @author 001332825
  */
-abstract class EmailTypeModel implements IModel{
+class EmailTypeModel extends BaseModel{
     
-    public function map(array $values) {
-        
-        foreach ($values as $key => $value) {
-           $method = 'set' . $key;
-            if ( method_exists($this, $method) ) {
-                $this->$method($value);
-            }       
-        } 
-        return $this;
+    private $emailtypeid;
+    private $emailtype;
+    private $active;
+    
+    function getEmailtypeid() {
+        return $this->phonetypeid;
     }
-    
-    public function reset() {
-        
-        $class_methods = get_class_methods($this);
 
-        foreach ($class_methods as $method_name) {
-           if ( strrpos($method_name, 'set', -strlen($method_name)) !== FALSE ) {
-               $this->$method_name('');
-           }
-            
-        } 
-         return $this;
+    function getEmailtype() {
+        return $this->emailtype;
     }
-    
-    public function getAllValues() {
-        $class_vars = get_class_vars(__CLASS__);
-        $values = array();
 
-        foreach ($class_vars as $var_name => $value) {
-            $method = 'get' . $var_name;
-            $values[$var_name] = '';
-            if ( method_exists($this, $method) ) {            
-                $values[$var_name] = $this->$method();
-            }
-        }
+    function getActive() {
+        return $this->active;
+    }
 
-        return $values; 
-        
+    function setEmailtypeid($emailtypeid) {
+        $this->emailtypeid = $emailtypeid;
+    }
+
+    function setEmailtype($emailtype) {
+        $this->emailtype = $emailtype;
+    }
+
+    function setActive($active) {
+        $this->active = $active;
     }
     
 }
