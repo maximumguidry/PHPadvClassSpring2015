@@ -49,6 +49,7 @@ include './bootstrap.php'; ?>
             {
                 echo '<p>No records deleted.</p>';
             }
+            echo '<p><a href="email-test.php">Back to Main</a></p>';
         ?>
         
         

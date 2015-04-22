@@ -101,6 +101,6 @@ include './bootstrap.php'; ?>
          $emailService->displayEmailsActions();
                           
          ?>
-                  
+         <a href="email-test.php">Back to Main</a>         
     </body>
 </html>
