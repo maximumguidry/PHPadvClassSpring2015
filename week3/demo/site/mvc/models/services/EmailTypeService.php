@@ -99,7 +99,7 @@ class EmailTypeService implements IService{
     }
     
     
-    public function getNewPhoneTypeModel() {
+    public function getNewEmailTypeModel() {
         return clone $this->getModel();
     }
 

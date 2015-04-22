@@ -216,7 +216,7 @@ use Exception;
             return new \APP\controller\TestController($_testService);
         })
         ->addDIController('emailtype', function()  use ($_emailtypeService ){           
-            return new \APP\controller\TestController($_emailtypeService);
+            return new \APP\controller\EmailTypeController($_emailtypeService);
         })
         
         ;
