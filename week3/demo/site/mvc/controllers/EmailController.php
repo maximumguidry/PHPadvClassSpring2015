@@ -1,25 +1,22 @@
 <?php
-/**
-
- */
-
 namespace APP\controller;
-
-use App\models\interfaces\IController;
+use App\models\interfaces\Icontroller;
 use App\models\interfaces\IService;
 
-class PhoneController extends BaseController implements IController {
-   
+class EmailController extends BaseController implements IController
+{
     protected $service;
     
-    public function __construct( IService $PhoneService  ) {                
-        $this->service = $PhoneService;  
+    public function __construct( IService $EmailService  ) {                
+        $this->service = $EmailService;  
     }
     
     public function execute(IService $scope) {
-        $viewPage = 'phone';
+        //I'll make this later
+        $viewPage = 'email';
         
-        $this->data['model'] = $this->service->getNewPhoneModel();
+        //I still need to make this in the email model
+        $this->data['model'] = $this->service->getNewEmailModel();
         $this->data['model']->reset();
         
         if ( $scope->util->isPostRequest() ) {
@@ -33,15 +30,17 @@ class PhoneController extends BaseController implements IController {
             
             if ( $scope->util->getAction() == 'edit' ) {
                 $viewPage .= 'edit';
-                $this->data['model'] = $this->service->read($scope->util->getPostParam('phoneid'));
+                $this->data['model'] = $this->service->read($scope->util->getPostParam('emailid'));
                   
             }
             
-            if ( $scope->util->getAction() == 'delete' ) {                
-                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('phoneid'));
+            if ( $scope->util->getAction() == 'delete' ) {
+                //looking for email id from scope if delete button pressed
+                $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('emailid'));
             }
             
              if ( $scope->util->getAction() == 'update'  ) {
+                 //gets the model when update button is pressed, but first it needs to pass validation before updating
                 $this->data['model']->map($scope->util->getPostValues());
                 $this->data["errors"] = $this->service->validate($this->data['model']);
                 $this->data["updated"] = $this->service->update($this->data['model']);
@@ -51,12 +50,15 @@ class PhoneController extends BaseController implements IController {
             
         }
         
-        
-        $this->data['phoneTypes'] = $this->service->getAllPhoneTypes(); 
-        $this->data['phones'] = $this->service->getAllPhones(); 
+        //gets all email types
+        $this->data['emailTypes'] = $this->service->getAllEmailTypes(); 
+        $this->data['phones'] = $this->service->getAllEmails(); 
         
         $scope->view = $this->data;
         return $this->view($viewPage,$scope);
     }
     
 }
+
+?>
+

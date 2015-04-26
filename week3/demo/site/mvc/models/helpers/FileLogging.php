@@ -18,7 +18,7 @@ use App\models\interfaces\ILogging;
 
 class FileLogging implements ILogging {
     //put your code here
-    
+    //what's going on with this array?
     private $logFiles = array(  "log" => 'logs/log.log.php',
                                 "error" => 'logs/errors.log.php', 
                                 "debug" => 'logs/debug.log.php', 
@@ -37,6 +37,7 @@ class FileLogging implements ILogging {
     }
 
     public function log($data) {
+        //don't know what this does
        return $this->_log($data, 'log');
     }
     
