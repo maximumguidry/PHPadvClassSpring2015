@@ -24,3 +24,6 @@
 [552e79636e059]	[exception]	[04-15-2015 4:44pm]	Controller for page "phone" failed
 [552e798f00100]	[exception]	[04-15-2015 4:45pm]	Scope variable hello not found or set.
 [553d1dc9b1ca3]	[exception]	[04-26-2015 7:18pm]	Controller for page "emailtype" failed
+[553d2df8e137e]	[exception]	[04-26-2015 8:27pm]	Controller for page "email" failed
+[553d33a59e35d]	[exception]	[04-26-2015 8:51pm]	Controller for page "emailtype" failed
+[553d33bd7a067]	[exception]	[04-26-2015 8:51pm]	Controller for page "emailtype" failed

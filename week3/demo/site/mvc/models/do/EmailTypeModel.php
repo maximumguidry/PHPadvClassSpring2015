@@ -18,7 +18,7 @@ class EmailTypeModel extends BaseModel{
     private $active;
     
     function getEmailtypeid() {
-        return $this->phonetypeid;
+        return $this->emailtypeid;
     }
 
     function getEmailtype() {

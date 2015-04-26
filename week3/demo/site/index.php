@@ -200,7 +200,7 @@ use Exception;
         $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
         $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator, $_phonemodel);
         $_emailtypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypemodel );
-        $_emailService = new EmailService($_emailDAO, $_emailTypeService, $_validator, $_emailmodel);
+        $_emailService = new EmailService($_emailDAO, $_emailtypeService, $_validator, $_emailmodel);
         
          $_testService = new TestService();
         
