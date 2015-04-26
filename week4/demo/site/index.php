@@ -186,23 +186,12 @@ use Exception;
         $_validator = new Validator();
         
         $_phoneTypemodel = new PhoneTypeModel();
-        $_emailTypemodel = new EmailTypeModel();
-        $_phonemodel = new PhoneModel();
-        $_emailmodel = new EmailModel();
         
-        //constructor for the DAO's getting the correct DB, logs, and models for each DAO
         $_phoneTypeDAO = new PhoneTypeDAO($_pdo->getDB(), $_phoneTypemodel, $_log);
-        $_emailTypeDAO = new EmailTypeDAO($_pdo->getDB(), $_emailTypemodel, $_log);
-        $_phoneDAO = new PhoneDAO($_pdo->getDB(), $_phonemodel, $_log);
-        $_emailDAO = new EmailDAO($_pdo->getDB(), $_emailmodel, $_log);
-        
-        
+                
         $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
-        $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator, $_phonemodel);
-        $_emailtypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypemodel );
-        $_emailService = new EmailService($_emailDAO, $_emailTypeService, $_validator, $_emailmodel);
         
-         $_testService = new TestService();
+       
         
         //http://php.net/manual/en/functions.anonymous.php
 
@@ -213,18 +202,6 @@ use Exception;
             return new \APP\controller\PhonetypeController($_phoneTypeService);
         })
         
-        ->addDIController('phone', function() use ($_phoneService ) {                        
-            return new \APP\controller\PhoneController($_phoneService);
-        })
-        ->addDIController('test', function()  use ($_testService ){           
-            return new \APP\controller\TestController($_testService);
-        })
-        ->addDIController('emailtype', function()  use ($_emailtypeService ){           
-            return new \APP\controller\EmailTypeController($_emailtypeService);
-        })
-        ->addDIController('email', function()  use ($_emailService ){           
-            return new \APP\controller\EmailController($_emailService);
-        })
         
         ;
         // run application!
