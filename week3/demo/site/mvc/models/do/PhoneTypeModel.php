@@ -15,6 +15,7 @@ class PhoneTypeModel extends BaseModel {
     private $phonetype;
     private $active;
     
+    
     function getPhonetypeid() {
         return $this->phonetypeid;
     }

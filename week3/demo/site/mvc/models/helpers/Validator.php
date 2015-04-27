@@ -47,6 +47,8 @@ class Validator implements IService {
         return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
     }
     
+    
+    
     /**
      * A method to check if a phone type is valid.
      *
@@ -54,6 +56,10 @@ class Validator implements IService {
      *
      * @return boolean
      */
+    
+    public function emailTypeIsValid($type) {
+        return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
+    }
     public function activeIsValid($type) {
         return ( is_string($type) && preg_match("/^[0-1]$/", $type) );
     }

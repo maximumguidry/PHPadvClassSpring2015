@@ -11,11 +11,15 @@ namespace App\models\services;
  *
  * @author 001332825
  */
+namespace App\models\services;
+
 class EmailTypeModel extends BaseModel{
     
     private $emailtypeid;
     private $emailtype;
     private $active;
+    
+    //echo var_dump($emailtypeid);
     
     function getEmailtypeid() {
         return $this->emailtypeid;

@@ -86,12 +86,12 @@ class EmailTypeService implements IService{
     
     public function validate( IModel $model ) {
         $errors = array();
-        if ( !$this->getValidator()->phoneTypeIsValid($model->getPhonetype()) ) {
-            $errors[] = 'Phone Type is invalid';
+        if ( !$this->getValidator()->emailTypeIsValid($model->getEmailtype()) ) {
+            $errors[] = 'Email Type is invalid';
         }
                
         if ( !$this->getValidator()->activeIsValid($model->getActive()) ) {
-            $errors[] = 'Phone active is invalid';
+            $errors[] = 'Email active is invalid';
         }
        
         

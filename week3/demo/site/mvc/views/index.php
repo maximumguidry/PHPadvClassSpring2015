@@ -5,18 +5,18 @@
         <title></title>
     </head>
     <body>
-        cool
+        Choose your choice
         <?php
         // put your code here
         
-        var_dump($scope->view);
+        //var_dump($scope->view);
         
         
         ?>
-        
-        <a href="phonetype">Phone Type</a>
-        <a href="phone">Phone</a>
-        <a href="emailtype">Email Type</a>
+        <br />
+        <a href="phonetype">Phone Type</a> <br />
+        <a href="phone">Phone</a> <br />
+        <a href="emailtype">Email Type</a> <br />
         <a href="email">Email</a>
     </body>
 </html>

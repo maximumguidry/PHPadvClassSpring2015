@@ -48,8 +48,7 @@ class EmailTypeDAO extends BaseDAO implements IDAO {
          
          $binds = array( ":emailtype" => $model->getEmailtype(),
                           ":active" => $model->getActive()
-                    );
-              //Question:  where does the get emailtypeid function come from?           
+                    );         
          if ( !$this->idExisit($model->getEmailtypeid()) ) {
              
              $stmt = $db->prepare("INSERT INTO emailtype SET emailtype = :emailtype, active = :active");
@@ -101,7 +100,8 @@ class EmailTypeDAO extends BaseDAO implements IDAO {
             $error = implode(",", $db->errorInfo());
             $this->getLog()->logError($error);
         }
-         
+         echo "ID:  " . $id;
+         echo var_dump($stmt);
          return false;
     }
     

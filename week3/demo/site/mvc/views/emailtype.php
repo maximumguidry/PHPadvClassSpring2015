@@ -13,7 +13,7 @@ and open the template in the editor.
         
         <?php
         // put your code here
-               var_dump($scope);
+          echo var_dump($scope->util->getPostValues());
          if ( $scope->util->isPostRequest() ) {
              
              if ( isset($scope->view['errors']) ) {
