@@ -1,6 +1,7 @@
 <?php
 namespace APP\controller;
-use App\models\interfaces\Icontroller;
+//needs these interfaces that ensure all necessary methods are in this class
+use App\models\interfaces\IController;
 use App\models\interfaces\IService;
 
 class EmailController extends BaseController implements IController
@@ -12,10 +13,10 @@ class EmailController extends BaseController implements IController
     }
     
     public function execute(IService $scope) {
-        //I'll make this later
+        //refers to the email view page
         $viewPage = 'email';
         
-        //I still need to make this in the email model
+        //puts the email model into the data 'model' key inherited from the base controller
         $this->data['model'] = $this->service->getNewEmailModel();
         $this->data['model']->reset();
         

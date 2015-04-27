@@ -18,6 +18,7 @@ use App\models\interfaces\IService;
 
 class BaseController {
     
+    //data will be used by the other controllers that inherit this base
     protected $data = array();
     
     protected function view($page, IService $scope) {

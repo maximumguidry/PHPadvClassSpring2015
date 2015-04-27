@@ -31,9 +31,9 @@ class EmailDAO extends BaseDAO implements IDAO
         }
          return false;
     }
-    //Qustion:  where is $id coming from?
+    
     public function read($id) {
-         
+         //Question:  Why use clone?
          $model = clone $this->getModel();
          
          $db = $this->getDB();

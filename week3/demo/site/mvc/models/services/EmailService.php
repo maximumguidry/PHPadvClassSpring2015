@@ -11,9 +11,10 @@ use App\models\interfaces\IDAO;
 use App\models\interfaces\IService;
 use App\models\interfaces\IModel;
 
+//contains anything related to the email table that needs to be done
 class EmailService implements IService 
 {
-    //contains getters and setters
+    //contains getters and setters for all the classes with methods
     protected $emailDAO;
     protected $emailTypeService;
     protected $validator;
@@ -51,11 +52,12 @@ class EmailService implements IService
         $this->model = $model;
     }
 
-        public function __construct( IDAO $emailDAO, IService $emailTypeService, IService $validator, IModel $model  ) {
-        $this->setEmailDAO($emailDAO);
-        $this->setEmailTypeService($emailTypeService);
-        $this->setValidator($validator);
-        $this->setModel($model);
+    //constructor for dao, service, validator and model to be used
+    public function __construct( IDAO $emailDAO, IService $emailTypeService, IService $validator, IModel $model  ) {
+    $this->setEmailDAO($emailDAO);
+    $this->setEmailTypeService($emailTypeService);
+    $this->setValidator($validator);
+    $this->setModel($model);
     }
     
     
