@@ -122,11 +122,10 @@ include './bootstrap.php';  ?>
                 </tr>
          <?php 
             $emailtypes = $emailTypeDAO->getAllRows(); 
-            echo var_dump($emailtypes);
             foreach ($emailtypes as $value) 
                 {
                 echo '<tr>',
-                        '<td>',$value->getEmailtype(),'</td>,',
+                        '<td>',$value->getEmailtype(),'</td>',
                         '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>',
                         '<td><a href="email-type-delete.php?id=',$value->getEmailtypeid(),'">Delete</a></td>',
                         '<td><a href="email-type-update.php?id=',$value->getEmailtypeid(),'">Update</a></td>',
