@@ -7,7 +7,7 @@
  */
 namespace App\models\services;
 
-
+//gets all of the email properties from the table
 class EmailModel extends BaseModel {
     
     private $emailid;

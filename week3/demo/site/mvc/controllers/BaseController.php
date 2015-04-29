@@ -20,7 +20,7 @@ class BaseController {
     
     //data will be used by the other controllers that inherit this base
     protected $data = array();
-    
+    //gets all of the files in the view folder
     protected function view($page, IService $scope) {
 
         $folder = "mvc".DIRECTORY_SEPARATOR."views";

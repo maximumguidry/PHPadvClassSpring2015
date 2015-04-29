@@ -12,9 +12,10 @@ use App\models\interfaces\IDAO;
 use App\models\interfaces\IModel;
 use App\models\interfaces\ILogging;
 use \PDO;
-
+//inherits the BaseDAO and implements the interface
 class EmailDAO extends BaseDAO implements IDAO 
 {
+    //setting up the constructor based on all of this bad boy's depenpencies
     public function __construct( PDO $db, IModel $model, ILogging $log ) {        
         $this->setDB($db);
         $this->setModel($model);
@@ -31,9 +32,9 @@ class EmailDAO extends BaseDAO implements IDAO
         }
          return false;
     }
-    
+    //the select statement to be used
     public function read($id) {
-         //Question:  Why use clone?
+         
          $model = clone $this->getModel();
          
          $db = $this->getDB();
@@ -54,7 +55,7 @@ class EmailDAO extends BaseDAO implements IDAO
     public function create(IModel $model) {
 
      $db = $this->getDB();
-//Question:  What does this do?
+     //binds the data from the model to the placeholders in the insert statement
      $binds = array( ":email" => $model->getEmail(),
                      ":active" => $model->getActive(),
                      ":emailtypeid" => $model->getEmailtypeid()             
@@ -76,7 +77,7 @@ class EmailDAO extends BaseDAO implements IDAO
     public function update(IModel $model) {
 
              $db = $this->getDB();
-
+            //binds the data from the model to the placeholders in the update statement
             $binds = array( ":email" => $model->getEmail(),
                             ":active" => $model->getActive(),
                             ":emailtypeid" => $model->getEmailtypeid(),
@@ -114,7 +115,7 @@ class EmailDAO extends BaseDAO implements IDAO
          
          return false;
     }
-    
+    //gets all rows from the email table
     public function getAllRows() {
        $db = $this->getDB();
        $values = array();

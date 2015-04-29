@@ -8,6 +8,7 @@ class EmailController extends BaseController implements IController
 {
     protected $service;
     
+    //dependency injection of the emailservice 
     public function __construct( IService $EmailService  ) {                
         $this->service = $EmailService;  
     }
@@ -20,8 +21,9 @@ class EmailController extends BaseController implements IController
         $this->data['model'] = $this->service->getNewEmailModel();
         $this->data['model']->reset();
         
+        //checks if something is being posted
         if ( $scope->util->isPostRequest() ) {
-            
+            //checking the actions sent from the form, then gets values from scope
             
             if ( $scope->util->getAction() == 'create' ) {
                 $this->data['model']->map($scope->util->getPostValues());
@@ -55,7 +57,9 @@ class EmailController extends BaseController implements IController
         $this->data['emailTypes'] = $this->service->getAllEmailTypes(); 
         $this->data['emails'] = $this->service->getAllEmails(); 
         
+        //gets all of the data from this and puts it into scope->view
         $scope->view = $this->data;
+        //returns the page with all of the stuff in scope
         return $this->view($viewPage,$scope);
     }
     

@@ -15,9 +15,9 @@
 namespace App\models\services;
 
 use App\models\interfaces\IModel;
-
+//model that all other models model themselves after
 abstract class BaseModel implements IModel {
-    
+    //maps keys and values to any model
     public function map(array $values) {
         
         foreach ($values as $key => $value) {

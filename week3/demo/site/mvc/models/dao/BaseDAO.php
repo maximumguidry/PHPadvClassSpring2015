@@ -17,6 +17,7 @@ use \App\models\interfaces\IModel;
 use App\models\interfaces\ILogging;
 use \PDO;
 
+//has functions that all of the DAO's will use
 abstract class BaseDAO {
     
     protected $DB = null;
