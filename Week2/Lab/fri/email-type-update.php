@@ -59,9 +59,7 @@ include './bootstrap.php'; ?>
         
         $emailTypeService = new EmailTypeService($db, $util, $validator, $emailTypeDAO, $emailTypeModel);
         
-        if ( $emailTypeDAO->idExisit($emailTypeModel->getEmailtypeid()) ) {
-            $emailTypeService->saveForm();
-        }
+        
         
         
         ?>
