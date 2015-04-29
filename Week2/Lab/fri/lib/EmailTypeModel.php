@@ -16,6 +16,7 @@ class EmailTypeModel implements IModel {
     
     private $emailtypeid;
     private $emailtype;
+    
     private $active;
     
     function getEmailtypeid() {
@@ -33,10 +34,11 @@ class EmailTypeModel implements IModel {
     function setEmailtypeid($emailtypeid) {
         if (is_integer($emailtypeid) ) {
             $this->emailtypeid = $emailtypeid;
-        } else {
-            
+        } else if (is_string($emailtypeid)) {
+            $this->emailtypeid = $emailtypeid;
         }
     }
+    
 
     function setEmailtype($emailtype) {
         $this->emailtype = $emailtype;
@@ -45,6 +47,8 @@ class EmailTypeModel implements IModel {
     function setActive($active) {
         $this->active = $active;
     }
+    
+    
 
     /*
      * When a class has to implement an interface those functions must be created in the class.
@@ -70,6 +74,8 @@ class EmailTypeModel implements IModel {
         if ( array_key_exists('active', $values) ) {
             $this->setActive($values['active']);
         }
+        
+        
         return $this;
     }
 

@@ -1,4 +1,6 @@
-<?php include './bootstrap.php'; ?>
+<?php 
+namespace bguidry\week2; 
+include './bootstrap.php';  ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +11,7 @@
         <?php
         
         $dbConfig = array(
-            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=PHPadvClassSpring2015',
+            "DB_DNS"=>'mysql:host=localhost;port=3306;dbname=phpadvclassspring2015',
             "DB_USER"=>'root',
             "DB_PASSWORD"=>''
         );
@@ -112,20 +114,24 @@
          ?>
          <table border="1" cellpadding="5">
                 <tr>
-                    <th>Email</th>
+
                     <th>Email Type</th>
-                    <th>Last updated</th>
-                    <th>Logged</th>
                     <th>Active</th>
-                    <th></th>
+                    <th>Delete</th>
+                    <th>Update</th>
                 </tr>
          <?php 
-            $emailtypes = $emailtypeDAO->getAllRows(); 
-            foreach ($emailtype as $value) {
-                echo '<tr><td>',$value->getEmailType(),'</td><td>',$value->getEmailtype(),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLastupdated())),'</td><td>',date("F j, Y g:i(s) a", strtotime($value->getLogged())),'</td>';
-                echo  '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td><td><a href="email-delete.php?id=',$value->getEmailid(),'">Delete</a></td></tr>' ;
-                
-            }
+            $emailtypes = $emailTypeDAO->getAllRows(); 
+            echo var_dump($emailtypes);
+            foreach ($emailtypes as $value) 
+                {
+                echo '<tr>',
+                        '<td>',$value->getEmailtype(),'</td>,',
+                        '<td>', ( $value->getActive() == 1 ? 'Yes' : 'No') ,'</td>',
+                        '<td><a href="email-type-delete.php?id=',$value->getEmailtypeid(),'">Delete</a></td>',
+                        '<td><a href="email-type-update.php?id=',$value->getEmailtypeid(),'">Update</a></td>',
+                     '</tr>';
+                }
 
          ?>
             </table>

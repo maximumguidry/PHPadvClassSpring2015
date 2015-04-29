@@ -43,9 +43,9 @@ class EmailTypeService {
         } else {
             
             if (  $this->_EmailTypeDAO->save($this->_EmailTypeModel) ) {
-                echo 'Email Added';
+                echo 'Email Type Added';
             } else {
-                echo 'Email could not be added Added';
+                echo 'Email Type could not be added';
             }
            
         }
@@ -94,6 +94,31 @@ class EmailTypeService {
             echo '<p>No Data</p>';
         }
         
+    }
+    
+    public function displayEmailsActions() {        
+       // Notice in the previous function I should have called get all rows
+        
+        $emailTypes = $this->_EmailTypeDAO->getAllRows();
+        
+        if ( count($emailTypes) <= 0 ) {
+            echo '<p>No Data</p>';
+        } 
+        else {
+            
+            
+             echo '<table border="1" cellpadding="5"><tr><th>Email Type</th><th>Active</th><th>Update</th><th>Delete</th></tr>';
+             foreach ($emailTypes as $value) {
+                echo '<tr>';
+                echo '<td>', ($value->getEmailType()) ,'</td>';
+                echo '<td>', ($value->getActive()) ,'</td>';
+                echo '<td><a href=email-type-update.php?id=',$value->getEmailtypeid(),'>Update</a></td>';
+                echo '<td><a href=email-type-delete.php?id=',$value->getEmailtypeid(),'>Delete</a></td>';
+                echo '</tr>' ;
+            }
+            echo '</table>';
+            
+        }
     }
     
     
