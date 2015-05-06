@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Description of PhonetypeController
- *
- * @author User
- */
-
 namespace API\models\services;
 
 use API\models\interfaces\IRequest;
