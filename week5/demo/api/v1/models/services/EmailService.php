@@ -85,7 +85,7 @@ class EmailService implements IService
         $errors = array();
         
         if ( !$this->getEmailTypeService()->idExist($model->getEmailtypeid()) ) {
-            $errors[] = 'Email Type is invalid';
+            $errors[] = 'Email Type is invalid'.$model->getEmailtypeid();
         }
        
         if ( !$this->getValidator()->emailIsValid($model->getEmail()) ) {
@@ -99,7 +99,9 @@ class EmailService implements IService
         
         return $errors;
     }
-    
+    public function idExisit($id) {
+        return $this->getEmailDAO()->idExisit($id);
+    }
     
     public function read($id) {
         return $this->getEmailDAO()->read($id);

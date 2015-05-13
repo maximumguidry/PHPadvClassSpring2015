@@ -48,7 +48,7 @@ class Validator implements IService {
     }
     
     public function emailTypeIsValid($type) {
-        return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
+        return ( (is_string($type) || is_numeric($type)) && preg_match("/^[a-zA-Z]+$/", $type) );
     }
     
     /**
