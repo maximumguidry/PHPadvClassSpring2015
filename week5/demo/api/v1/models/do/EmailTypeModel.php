@@ -1,5 +1,5 @@
 <?php
-namespace App\models\services;
+namespace API\models\services;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,9 +11,8 @@ namespace App\models\services;
  *
  * @author 001332825
  */
-namespace App\models\services;
 
-class EmailTypeModel extends BaseModel{
+class EmailTypeModel extends BaseModel {
     
     private $emailtypeid;
     private $emailtype;

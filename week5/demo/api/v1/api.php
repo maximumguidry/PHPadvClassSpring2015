@@ -89,7 +89,7 @@ final class Index {
         return new PhoneRequest($_phoneService);
     })
     ->addDIResourceRequest('emailtypes', function() use ($_emailTypeService ) {       
-        return new PhonetypeRequest($_emailTypeService);
+        return new EmailtypeRequest($_emailTypeService);
     })    
     ->addDIResourceRequest('emails', function() use ($_emailService ) {       
         return new EmailRequest($_emailService);

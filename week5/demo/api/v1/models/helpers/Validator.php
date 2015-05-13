@@ -47,6 +47,10 @@ class Validator implements IService {
         return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
     }
     
+    public function emailTypeIsValid($type) {
+        return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
+    }
+    
     /**
      * A method to check if a phone type is valid.
      *

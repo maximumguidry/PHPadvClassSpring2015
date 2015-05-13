@@ -5,11 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\IDAO;
-use App\models\interfaces\IService;
-use App\models\interfaces\IModel;
+use API\models\interfaces\IDAO;
+use API\models\interfaces\IService;
+use API\models\interfaces\IModel;
 
 //contains anything related to the email table that needs to be done
 class EmailService implements IService 

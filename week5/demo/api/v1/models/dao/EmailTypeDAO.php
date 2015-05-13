@@ -1,9 +1,9 @@
 <?php
-namespace App\models\services;
+namespace API\models\services;
 
-use App\models\interfaces\IDAO;
-use App\models\interfaces\IModel;
-use App\models\interfaces\ILogging;
+use API\models\interfaces\IDAO;
+use API\models\interfaces\IModel;
+use API\models\interfaces\ILogging;
 use \PDO;
 
 class EmailTypeDAO extends BaseDAO implements IDAO {

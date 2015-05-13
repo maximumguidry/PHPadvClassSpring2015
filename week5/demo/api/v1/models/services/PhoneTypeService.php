@@ -1,11 +1,4 @@
 <?php
-
-/**
- * Description of PhoneTypeService
- *
- * @author User
- */
-
 namespace API\models\services;
 
 use API\models\interfaces\IDAO;

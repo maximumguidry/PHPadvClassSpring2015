@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-namespace App\models\services;
+namespace API\models\services;
 
 //gets all of the email properties from the table
 class EmailModel extends BaseModel {
