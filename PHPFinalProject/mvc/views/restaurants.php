@@ -65,8 +65,8 @@ and open the template in the editor.
                 echo '<tr>';
                 echo '<td>', $value->getRestaurant_name(),'</td>';
                 echo '<td>', $value->getLocation(),'</td>';
-                echo '<td><form action="#" method="post"><input type="hidden"  name="emailtypeid" value="',$value->getRestaurantid(),'" /><input type="hidden" name="action" value="edit" /><input type="submit" value="EDIT" /> </form></td>';
-                echo '<td><form action="#" method="post"><input type="hidden"  name="emailtypeid" value="',$value->getRestaurantid(),'" /><input type="hidden" name="action" value="delete" /><input type="submit" value="DELETE" /> </form></td>';
+                echo '<td><form action="#" method="post"><input type="hidden"  name="restaurantid" value="',$value->getRestaurantid(),'" /><input type="hidden" name="action" value="edit" /><input type="submit" value="EDIT" /> </form></td>';
+                echo '<td><form action="#" method="post"><input type="hidden"  name="restaurantid" value="',$value->getRestaurantid(),'" /><input type="hidden" name="action" value="delete" /><input type="submit" value="DELETE" /> </form></td>';
                 echo '</tr>' ;
             }
             echo '</table>';
