@@ -27,3 +27,7 @@
 [553d2df8e137e]	[exception]	[04-26-2015 8:27pm]	Controller for page "email" failed
 [553d33a59e35d]	[exception]	[04-26-2015 8:51pm]	Controller for page "emailtype" failed
 [553d33bd7a067]	[exception]	[04-26-2015 8:51pm]	Controller for page "emailtype" failed
+[5564778b3e31b]	[exception]	[05-26-2015 3:39pm]	Controller for page "restaurants" failed
+[55647ad393594]	[exception]	[05-26-2015 3:53pm]	Controller for page "restaurants" failed
+[55647b94d1103]	[exception]	[05-26-2015 3:56pm]	Controller for page "restaurants" failed
+[55647b9b32739]	[exception]	[05-26-2015 3:56pm]	Controller for page "items" failed

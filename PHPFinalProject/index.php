@@ -189,6 +189,7 @@ use Exception;
 //        $_emailTypemodel = new EmailTypeModel();
 //        $_phonemodel = new PhoneModel();
 //        $_emailmodel = new EmailModel();
+        
         $_restaurantmodel = new RestaurantModel();
         
         //constructor for the DAO's getting the correct DB, logs, and models for each DAO
@@ -204,14 +205,14 @@ use Exception;
 //        $_emailtypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypemodel );
 //        $_emailService = new EmailService($_emailDAO, $_emailtypeService, $_validator, $_emailmodel);
         
-        $_restaurantService = new RestaurantService($_restaurantDAO, $_restaurantService, $_validator, $_restaurantmodel);
+        $_restaurantService = new RestaurantService($_restaurantDAO, $_validator, $_restaurantmodel);
         
         //http://php.net/manual/en/functions.anonymous.php
 
         $index->addDIController('index', function() {            
             return new \APP\controller\IndexController();
         })
-        ->addDIController('restaurant', function()  use ($_restaurantService ){           
+        ->addDIController('restaurants', function()  use ($_restaurantService ){           
             return new \APP\controller\RestaurantController($_restaurantService);
         })
         

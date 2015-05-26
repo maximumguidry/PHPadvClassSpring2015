@@ -39,9 +39,10 @@ and open the template in the editor.
          <h3>Add Restaurant</h3>
         <form action="#" method="post">
             <label>Restaurant Name:</label> 
-            <input type="text" name="restaurant_name" value="<?php echo $restaurant_name; ?>" placeholder="" />
+            <input type="text" name="restaurant_name" value="<?php echo $restaurant_name; ?>" placeholder="" /><br />
+            <label>Location</label>
             <input type="text" name="location" value="<?php echo $location; ?>" />
-            <input type="hidden" name="action" value="create" />
+            <input type="hidden" name="action" value="create" /><br />
             <input type="submit" value="Submit" />
         </form>
          <br />

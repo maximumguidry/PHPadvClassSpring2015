@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\models\services;
 
 use App\models\interfaces\IService;

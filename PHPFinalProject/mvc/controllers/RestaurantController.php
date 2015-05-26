@@ -11,18 +11,16 @@ use App\models\interfaces\IService;
 
 class RestaurantController extends BaseController implements IController {
     
-    public function __construct( IService $RestaurantService ) {                
-        $this->service = $RestaurantService;     
-        
+    public function __construct(IService $RestaurantService ) {                
+        $this->service = $RestaurantService; 
     }
-    
     public function execute(IService $scope) {
         $this->data['model'] = $this->service->getNewRestaurantModel();
         $this->data['model']->reset();
         $viewPage = 'restaurants';
         
         
-        if ( $scope->util->isPostRequest() ) {
+        if ($scope->util->isPostRequest() ) {
             
             if ( $scope->util->getAction() == 'create' ) {
                 $this->data['model']->map($scope->util->getPostValues());

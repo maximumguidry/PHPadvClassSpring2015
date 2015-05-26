@@ -14,8 +14,8 @@
         
         ?>
         <br />
-        <a href="restaurants.php">Restaurants</a> <br />
-        <a href="items.php">Dishes and Items</a> <br />
+        <a href="restaurants">Restaurants</a> <br />
+        <a href="items">Dishes and Items</a> <br />
         
     </body>
 </html>

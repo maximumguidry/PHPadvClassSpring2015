@@ -45,7 +45,7 @@ class RestaurantService implements IService{
          $this->DAO = $DAO;
      }
 
-    public function __construct( IDAO $RestaurantDAO, IService $validator, IModel $model  ) {
+    public function __construct(IDAO $RestaurantDAO, IService $validator, IModel $model  ) {
         $this->setDAO($RestaurantDAO);
         $this->setValidator($validator);
         $this->setModel($model);
@@ -87,7 +87,7 @@ class RestaurantService implements IService{
     public function validate( IModel $model ) {
         $errors = array();
         //NOTE:  Need to get validator stuff done
-        if ( !$this->getValidator()->restaurantIsValid($model->getRestaurant()) ) {
+        if ( !$this->getValidator()->restaurant_nameIsValid($model->getRestaurant_name()) ) {
             $errors[] = 'Restaurant name is invalid';
         }
                
