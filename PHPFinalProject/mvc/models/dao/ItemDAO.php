@@ -6,7 +6,7 @@ use App\models\interfaces\IModel;
 use App\models\interfaces\ILogging;
 use \PDO;
 
-class RestaurantDAO extends BaseDAO implements IDAO {
+class ItemDAO extends BaseDAO implements IDAO {
     
     public function __construct( PDO $db, IModel $model, ILogging $log ) {        
         $this->setDB($db);
@@ -17,9 +17,9 @@ class RestaurantDAO extends BaseDAO implements IDAO {
     public function idExisit($id) {
         
         $db = $this->getDB();
-        $stmt = $db->prepare("SELECT * FROM restaurants WHERE restaurantid = :restaurantid");
+        $stmt = $db->prepare("SELECT * FROM items WHERE itemid = :itemid");
          
-        if ( $stmt->execute(array(':restaurantid' => $id)) && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute(array(':itemid' => $id)) && $stmt->rowCount() > 0 ) {
             return true;
         }
          return false;
@@ -31,9 +31,9 @@ class RestaurantDAO extends BaseDAO implements IDAO {
          
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT * FROM restaurants WHERE restaurantid = :restaurantid");
+         $stmt = $db->prepare("SELECT * FROM items WHERE itemid = :itemid");
          
-         if ( $stmt->execute(array(':restaurantid' => $id)) && $stmt->rowCount() > 0 ) {
+         if ( $stmt->execute(array(':itemid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
              $model->reset()->map($results);
          }
@@ -46,12 +46,17 @@ class RestaurantDAO extends BaseDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $binds = array( ":restaurant_name" => $model->getRestaurant_name(),
-                          ":location" => $model->getLocation()
+         $binds = array( ":name" => $model->getName(),
+                          ":type" => $model->getType(),
+                          ":rating" => $model->getRating(),
+                          ":comments" => $model->getComments(),
+                          ":beverage" => $model->getBeverage(),
+                          ":spicy" => $model->getSpicy(),
+                          ":restaurantid" => $model->getRestaurantid(),
                     );         
-         if ( !$this->idExisit($model->getRestaurantid()) ) {
+         if ( !$this->idExisit($model->getitemid()) ) {
              
-             $stmt = $db->prepare("INSERT INTO restaurants SET restaurant_name = :restaurant_name, location = :location");
+             $stmt = $db->prepare("INSERT INTO items SET restaurant_name = :restaurant_name, location = :location");
              
              if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
                 return true;

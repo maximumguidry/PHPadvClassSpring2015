@@ -1,48 +1,35 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Restaurants</title>
+        <title>Restaurant Edit</title>
     </head>
     <body>
-        
         <?php
         // put your code here
-          
-         if ( $scope->util->isPostRequest() ) {
-             
-             if ( isset($scope->view['errors']) ) {
-                print_r($scope->view['errors']);
-             }
-             
-             if ( isset($scope->view['saved']) && $scope->view['saved'] ) {
-                  echo 'Restaurant Added';
-             }
-             
-             if ( isset($scope->view['deleted']) && $scope->view['deleted'] ) {
-                  echo 'Restaurant deleted';
-             }
-             
-         }
-        //Will need to set up DO first
-         $restaurant_name = $scope->view['model']->getRestaurant_name();
-         $location = $scope->view['model']->getLocation();
+        //echo var_dump($scope);
         
+         if ( isset($scope->view['updated']) ) {
+            if( $scope->view['updated'] ) {        
+                 echo 'Restaurant Updated';
+            } else {
+                 echo 'Restaurant NOT Updated';
+            }                 
+        }
+        
+            $restaurantid = $scope->view['model']->getRestaurantid();
+            $restaurant_name = $scope->view['model']->getRestaurant_name();
+            $location = $scope->view['model']->getLocation();
         ?>
         
-        
-         <h3>Add Restaurant</h3>
+        <h3>Edit Restaurant</h3>
         <form action="#" method="post">
             <label>Restaurant Name:</label> 
             <input type="text" name="restaurant_name" value="<?php echo $restaurant_name; ?>" placeholder="" /><br />
             <label>Location</label>
             <input type="text" name="location" value="<?php echo $location; ?>" />
-            <input type="hidden" name="action" value="create" /><br />
+            <input type="hidden" name="action" value="update" /><br />
+            <input type="hidden"  name="restaurantid" value="<?php echo $restaurantid; ?>" />
             <input type="submit" value="Submit" />
         </form>
          <br />
@@ -72,12 +59,10 @@ and open the template in the editor.
             echo '</table>';
             
         }
-         
-         
-         
-         
-         
+           
+           
+            
          ?>
+            
     </body>
 </html>
-
