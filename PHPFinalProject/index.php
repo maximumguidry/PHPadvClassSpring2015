@@ -191,6 +191,7 @@ use Exception;
 //        $_emailmodel = new EmailModel();
         
         $_restaurantmodel = new RestaurantModel();
+        $_itemmodel = new ItemModel();
         
         //constructor for the DAO's getting the correct DB, logs, and models for each DAO
 //        $_phoneTypeDAO = new PhoneTypeDAO($_pdo->getDB(), $_phoneTypemodel, $_log);
@@ -198,6 +199,7 @@ use Exception;
 //        $_phoneDAO = new PhoneDAO($_pdo->getDB(), $_phonemodel, $_log);
 //        $_emailDAO = new EmailDAO($_pdo->getDB(), $_emailmodel, $_log);
         $_restaurantDAO = new RestaurantDAO($_pdo->getDB(), $_restaurantmodel, $_log);
+        $_itemDAO = new ItemDAO($_pdo->getDB(), $_itemmodel, $_log);
         
         
 //        $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
@@ -206,6 +208,7 @@ use Exception;
 //        $_emailService = new EmailService($_emailDAO, $_emailtypeService, $_validator, $_emailmodel);
         
         $_restaurantService = new RestaurantService($_restaurantDAO, $_validator, $_restaurantmodel);
+        $_itemService = new ItemService($_itemDAO, $_restaurantService, $_validator, $_itemmodel);
         
         //http://php.net/manual/en/functions.anonymous.php
 
@@ -214,6 +217,9 @@ use Exception;
         })
         ->addDIController('restaurants', function()  use ($_restaurantService ){           
             return new \APP\controller\RestaurantController($_restaurantService);
+        })
+        ->addDIController('items', function()  use ($_itemService ){           
+            return new \APP\controller\ItemController($_itemService);
         })
         
         ;

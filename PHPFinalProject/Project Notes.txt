@@ -10,7 +10,7 @@ Dishes
 CREATE:  INSERT INTO items SET name = 'Spicy Bad Girl Roll', type = 'Japanese', rating = 5, comments = 'Spicy and bad in a good way', beverage = 0, spicy = 1, restaurantid = 1;
 READ:  SELECT items.itemid, items.name, items.type, items.rating, items.comments, items.beverage, items.spicy, restaurants.restaurant_name as restaurant_name FROM items LEFT JOIN restaurants on items.restaurantid = restaurants.restaurantid where itemid = 1;
 UPDATE:  UPDATE items SET name = 'Spicy Bad Girl Rolls', type = 'Japanese', rating = 4, comments = 'Spicy and bad in a good way', beverage = 0, spicy = 1, restaurantid = 1 WHERE itemid = 1;
-DELETE: DETE FROM items WHERE itemid = 1;
+DELETE: DELETE FROM items WHERE itemid = 1;
 
 Resaurants:
 

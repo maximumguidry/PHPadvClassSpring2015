@@ -31,7 +31,7 @@ class ItemDAO extends BaseDAO implements IDAO {
          
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT * FROM items WHERE itemid = :itemid");
+         $stmt = $db->prepare("SELECT items.itemid, items.name, items.type, items.rating, items.comments, items.beverage, items.spicy, restaurants.restaurant_name as restaurant_name FROM items LEFT JOIN restaurants on items.restaurantid = restaurants.restaurantid where itemid = :itemid;");
          
          if ( $stmt->execute(array(':itemid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -52,11 +52,11 @@ class ItemDAO extends BaseDAO implements IDAO {
                           ":comments" => $model->getComments(),
                           ":beverage" => $model->getBeverage(),
                           ":spicy" => $model->getSpicy(),
-                          ":restaurantid" => $model->getRestaurantid(),
+                          ":restaurantid" => $model->getRestaurantid()
                     );         
-         if ( !$this->idExisit($model->getitemid()) ) {
+         if ( !$this->idExisit($model->getItemid()) ) {
              
-             $stmt = $db->prepare("INSERT INTO items SET restaurant_name = :restaurant_name, location = :location");
+             $stmt = $db->prepare("INSERT INTO items SET name = :name, type = :type, rating = :rating, comments = :comments, beverage = :beverage, spicy = :spicy, restaurantid = :restaurantid");
              
              if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
                 return true;
@@ -72,15 +72,20 @@ class ItemDAO extends BaseDAO implements IDAO {
                  
          $db = $this->getDB();
          
-         $binds = array( ":restaurant_name" => $model->getRestaurant_name(),
-                          ":location" => $model->getLocation(),
-                          ":restaurantid" => $model->getRestaurantid()
+         $binds = array( ":name" => $model->getName(),
+                          ":type" => $model->getType(),
+                          ":rating" => $model->getRating(),
+                          ":comments" => $model->getComments(),
+                          ":beverage" => $model->getBeverage(),
+                          ":spicy" => $model->getSpicy(),
+                          ":restaurantid" => $model->getRestaurantid(),
+                          ":itemid" => $model->getId()
                     );
          
                 
          if ( $this->idExisit($model->getRestaurantid()) ) {
             
-             $stmt = $db->prepare("UPDATE restaurants SET restaurant_name = :restaurant_name, location = :location where restaurantid = :restaurantid");
+             $stmt = $db->prepare("UPDATE items SET name = :name, type = :type, rating = :rating, comments = :comments, beverage = :beverage, spicy = :spicy, restaurantid = :restaurantid WHERE itemid = :itemid;");
          
              if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
                 return true;
@@ -97,9 +102,9 @@ class ItemDAO extends BaseDAO implements IDAO {
     public function delete($id) {
           
         $db = $this->getDB();         
-        $stmt = $db->prepare("Delete FROM restaurants WHERE restaurantid = :restaurantid");
+        $stmt = $db->prepare("Delete FROM items WHERE itemid = :itemid");
 
-        if ( $stmt->execute(array(':restaurantid' => $id)) && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute(array(':itemid' => $id)) && $stmt->rowCount() > 0 ) {
             return true;
         } else {
             $error = implode(",", $db->errorInfo());
@@ -113,7 +118,7 @@ class ItemDAO extends BaseDAO implements IDAO {
        $db = $this->getDB();
        $values = array();
        
-        $stmt = $db->prepare("SELECT * FROM restaurants");
+        $stmt = $db->prepare("SELECT items.itemid, items.name, items.type, items.rating, items.comments, items.beverage, items.spicy, restaurants.restaurant_name as restaurant_name FROM items LEFT JOIN restaurants on items.restaurantid = restaurants.restaurantid");
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

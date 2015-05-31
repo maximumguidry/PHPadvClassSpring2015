@@ -11,6 +11,7 @@ class ItemModel extends BaseModel{
     private $beverage;
     private $spicy;
     private $restaurantid;
+    private $restaurant_name;
     
 
     function getItemid() {
@@ -44,6 +45,10 @@ class ItemModel extends BaseModel{
     function getRestaurantid() {
         return $this->restaurantid;
     }
+    
+    function getRestaurant_name() {
+        return $this->restaurant_name;
+    }
 
     function setItemid($itemid) {
         $this->itemid = $itemid;
@@ -75,6 +80,10 @@ class ItemModel extends BaseModel{
     
     function setRestaurantid($restaurantid) {
         $this->restaurantid = $restaurantid;
+    }
+    
+    function setRestaurant_name($restaurant_name) {
+        $this->restaurant_name = $restaurant_name;
     }
     
 }
