@@ -11,7 +11,7 @@ use App\models\interfaces\IModel;
  */
 
 /**
- * Description of EmailTypeService
+ * Description of ItemService
  *
  * @author 001332825
  */
@@ -66,7 +66,6 @@ class ItemService implements IService{
     
     public function getAllRestaurants() {       
         return $this->getRestaurantService()->getAllRows();   
-        
     }
     
      public function getAllItems() {       
@@ -105,11 +104,24 @@ class ItemService implements IService{
     public function validate( IModel $model ) {
         $errors = array();
         //NOTE:  Need to get validator stuff done
-        if ( !$this->getValidator()->restaurant_nameIsValid($model->getRestaurant_name()) ) {
-            $errors[] = 'Restaurant name is invalid';
-        }
-               
-       
+        if ( !$this->getValidator()->itemIsValid($model->getName()) ) {
+            $errors[] = 'Item name is invalid';
+        }       
+       if ( !$this->getValidator()->typeIsValid($model->getType()) ) {
+            $errors[] = 'Type is invalid';
+        }  
+        
+        if ( !$this->getValidator()->beverageIsValid($model->getBeverage()) ) {
+            $errors[] = 'Beverage is invalid';
+        }  
+        
+        if ( !$this->getValidator()->spicyIsValid($model->getSpicy()) ) {
+            $errors[] = 'Spicy is invalid';
+        }  
+        
+        if ( !$this->getValidator()->ratingIsValid($model->getRating()) ) {
+            $errors[] = 'Rating is invalid';
+        }  
         
         return $errors;
     }

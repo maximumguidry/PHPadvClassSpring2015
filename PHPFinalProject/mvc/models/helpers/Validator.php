@@ -14,35 +14,23 @@ class Validator implements IService {
         return ( is_string($location) && !empty($location) ); 
     }
    
-    public function phoneIsValid($phone) {
-        return ( preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone) );
+    public function itemIsValid($item) {
+        return ( is_string($item) && !empty($item) ); 
     }
     
-    /**
-     * A method to check if a phone type is valid.
-     *
-     * @param {String} [$type] - must be a valid string
-     *
-     * @return boolean
-     */
-    public function phoneTypeIsValid($type) {
-        return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
+    public function typeIsValid($type) {
+        return ( is_string($type) && !empty($type) ); 
     }
     
-    
-    
-    /**
-     * A method to check if a phone type is valid.
-     *
-     * @param {String} [$type] - must be a valid string
-     *
-     * @return boolean
-     */
-    
-    public function emailTypeIsValid($type) {
-        return ( is_string($type) && preg_match("/^[a-zA-Z]+$/", $type) );
+    public function beverageIsValid($beverage) {
+        return ( is_string($beverage) && preg_match("/^[0-1]$/", $beverage) );
     }
-    public function activeIsValid($type) {
-        return ( is_string($type) && preg_match("/^[0-1]$/", $type) );
+    
+    public function spicyIsValid($spicy) {
+        return ( is_string($spicy) && preg_match("/^[0-1]$/", $spicy) );
+    }
+    
+    public function ratingIsValid($rating) {
+        return ( is_string($rating) && preg_match("/^[1-5]$/", $rating) );
     }
 }

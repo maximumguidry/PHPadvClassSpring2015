@@ -49,7 +49,8 @@ class ItemController extends BaseController implements IController {
         
         
        
-        $this->data['items'] = $this->service->getAllItems();        
+        $this->data['items'] = $this->service->getAllItems();    
+        $this->data['restaurants'] = $this->service->getAllRestaurants(); 
         
         
         $scope->view = $this->data;

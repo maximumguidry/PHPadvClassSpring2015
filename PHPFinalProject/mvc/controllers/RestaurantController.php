@@ -49,7 +49,7 @@ class RestaurantController extends BaseController implements IController {
         
         
        
-        $this->data['Restaurants'] = $this->service->getAllRows();        
+        $this->data['restaurants'] = $this->service->getAllRows();        
         
         
         $scope->view = $this->data;

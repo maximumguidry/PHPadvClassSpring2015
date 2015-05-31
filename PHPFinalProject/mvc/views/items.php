@@ -5,6 +5,11 @@
         <title>Items</title>
     </head>
     <body>
+        <nav>
+            <a href="index.php">Index</a>
+            <a href="restaurants.php">Restaurants</a>
+            <a href="items.php">Items</a>
+        </nav>
         <?php
         // put your code here
                 
@@ -32,10 +37,15 @@
             $spicy = $scope->view['model']->getSpicy();
             $restaurantid = $scope->view['model']->getRestaurantid();
             $itemid = $scope->view['model']->getItemid();
+            
+            
         ?>
         
         <h3>Add Dish</h3>
-        <form action="#" method="post">
+        
+        
+        
+        <form action="#" method="post" name="frmItems">
             <label>Item:</label>            
             <input type="text" name="name" value="<?php echo $name; ?>" placeholder="" />
             <br /><br />
@@ -53,20 +63,19 @@
             <br /><br />
             
             <label>Rating:</label>
-            <input type="number" max="5" min="0" name="rating" value="<?php echo $rating; ?>" />
+            <input type="number" max="5" min="1" name="rating" value="<?php echo $rating; ?>" />
             <br /><br />
             
             <label>Comments:</label><br />            
-            <textarea cols="60" rows="4" name="comments" value="<?php echo $comments; ?>" placeholder="">
-            </textarea>
-            <br /><br />
+            <textarea cols="60" rows="4" name="comments"><?php echo $comments; ?></textarea>
             
             
             <br /><br />
             <label>Restaurant:</label>
             <select name="restaurantid">
             <?php 
-                foreach ( $scope->view['Restaurants'] as $value) {
+            
+                foreach ($scope->view['restaurants'] as $value) {
                     if ( $value->getRestaurantid() == $restaurantid ) {
                         echo '<option value="',$value->getRestaurantid(),'" selected="selected">',$value->getRestaurant_name(),'</option>';  
                     } else {
@@ -75,23 +84,23 @@
                 }
             ?>
             </select>
-            
              <br /><br />
             <input type="hidden" name="action" value="create" />
             <input type="submit" value="Submit" />
         </form>
-        
-        
+
         
          <br />
          <br />
-         
-        <form action="#" method="post" name="frmItems">
+        <form action="#" method="post" >
             <input type="hidden" name="action" value="add" />
             <input type="submit" value="ADD Page" /> 
         </form>
+        <br />
         
          <?php 
+         
+         
          
           if ( count($scope->view['items']) <= 0 ) {
                 echo '<p>No Data</p>';
@@ -112,8 +121,8 @@
                 }
                 echo '</table>';
             }
-           
-           var_dump($scope);
+           //print_r($scope->view['items']);
+           //var_dump($scope);
 
          ?>
             

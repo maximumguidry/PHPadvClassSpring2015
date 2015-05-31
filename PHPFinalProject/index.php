@@ -185,27 +185,15 @@ use Exception;
         $_scope->util = new Util();
         $_validator = new Validator();
         
-//        $_phoneTypemodel = new PhoneTypeModel();
-//        $_emailTypemodel = new EmailTypeModel();
-//        $_phonemodel = new PhoneModel();
-//        $_emailmodel = new EmailModel();
         
         $_restaurantmodel = new RestaurantModel();
         $_itemmodel = new ItemModel();
         
         //constructor for the DAO's getting the correct DB, logs, and models for each DAO
-//        $_phoneTypeDAO = new PhoneTypeDAO($_pdo->getDB(), $_phoneTypemodel, $_log);
-//        $_emailTypeDAO = new EmailTypeDAO($_pdo->getDB(), $_emailTypemodel, $_log);
-//        $_phoneDAO = new PhoneDAO($_pdo->getDB(), $_phonemodel, $_log);
-//        $_emailDAO = new EmailDAO($_pdo->getDB(), $_emailmodel, $_log);
         $_restaurantDAO = new RestaurantDAO($_pdo->getDB(), $_restaurantmodel, $_log);
         $_itemDAO = new ItemDAO($_pdo->getDB(), $_itemmodel, $_log);
         
-        
-//        $_phoneTypeService = new PhoneTypeService($_phoneTypeDAO, $_validator, $_phoneTypemodel );
-//        $_phoneService = new PhoneService($_phoneDAO, $_phoneTypeService, $_validator, $_phonemodel);
-//        $_emailtypeService = new EmailTypeService($_emailTypeDAO, $_validator, $_emailTypemodel );
-//        $_emailService = new EmailService($_emailDAO, $_emailtypeService, $_validator, $_emailmodel);
+ 
         
         $_restaurantService = new RestaurantService($_restaurantDAO, $_validator, $_restaurantmodel);
         $_itemService = new ItemService($_itemDAO, $_restaurantService, $_validator, $_itemmodel);

@@ -91,11 +91,12 @@ class RestaurantService implements IService{
             $errors[] = 'Restaurant name is invalid';
         }
                
-       
+       if ( !$this->getValidator()->locationIsValid($model->getLocation()) ) {
+            $errors[] = 'Location is invalid';
+        }
         
         return $errors;
     }
-    
     
     public function getNewRestaurantModel() {
         return clone $this->getModel();

@@ -34,3 +34,4 @@
 [55648066706e2]	[exception]	[05-26-2015 4:17pm]	Controller for page "restaurants" failed
 [556483661430d]	[exception]	[05-26-2015 4:29pm]	Controller for page "restaurants" failed
 [556504cb53e00]	[exception]	[05-27-2015 1:42am]	Controller for page "items" failed
+[556b93919a692]	[exception]	[06-01-2015 1:04am]	Controller for page "items" failed

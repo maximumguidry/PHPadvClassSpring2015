@@ -42,13 +42,13 @@
          <?php
          
         
-          if ( count($scope->view['Restaurants']) <= 0 ) {
+          if ( count($scope->view['restaurants']) <= 0 ) {
             echo '<p>No Data</p>';
         } else {
             
             
              echo '<table border="1" cellpadding="5"><tr><th>Resaurant Name</th><th>Location</th><th></th><th></th></tr>';
-             foreach ($scope->view['Restaurants'] as $value) {
+             foreach ($scope->view['restaurants'] as $value) {
                 echo '<tr>';
                 echo '<td>', $value->getRestaurant_name(),'</td>';
                 echo '<td>', $value->getLocation(),'</td>';
