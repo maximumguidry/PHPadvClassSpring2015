@@ -42,6 +42,7 @@ and open the template in the editor.
         
         
          <h3>Add Restaurant</h3>
+         <hr /><br />
          <div class="frmInput">
         <form action="#" method="post">
             <label>Restaurant Name:</label> <br />

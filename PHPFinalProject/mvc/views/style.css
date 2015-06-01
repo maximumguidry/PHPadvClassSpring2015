@@ -6,6 +6,42 @@ body
     color: brown;
 }
 
+h1
+{
+    font-size: 56px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2
+{
+    font-size: 36px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+#aMainLinks
+{
+    margin: auto;
+    text-align: center;
+    font-size: 36px;
+    width: 400px;
+    height: 400px;
+    vertical-align: middle;
+    //background-color: white;
+    //vertical-align: middle;
+}
+
+#spMainlinks
+{
+    //display: inline-block;
+    vertical-align: middle;
+    line-height: normal; 
+    margin-top: 200px;
+}
+
 h3
 {
     font-size: 46px;
@@ -104,5 +140,23 @@ th
 input
 {
     
+}
+
+hr {
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+hr:before { 
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
 }
 

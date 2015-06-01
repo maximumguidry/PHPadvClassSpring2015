@@ -46,8 +46,7 @@
             
         ?>
         
-        <h3>Add Dish</h3>
-        
+        <h3>Add Dish</h3><hr class="style-seven" /><br />
         
         <div class="frmInput">
         <form action="#" method="post">

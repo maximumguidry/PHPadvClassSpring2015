@@ -28,7 +28,7 @@
             $location = $scope->view['model']->getLocation();
         ?>
         
-        <h3>Edit Restaurant</h3>
+        <h3>Edit Restaurant</h3><hr /><br />
         <div class="frmInput">
         <form action="#" method="post">
             <label>Restaurant Name:</label> <br />

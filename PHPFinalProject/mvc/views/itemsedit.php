@@ -34,9 +34,8 @@
             
         ?>
         
-        <h3>Edit Dish</h3>
-        
-        
+        <h3>Edit Dish</h3><hr /><br />
+
         <div class="frmInput">
         <form action="#" method="post">
             <label>Item:</label><br />         
