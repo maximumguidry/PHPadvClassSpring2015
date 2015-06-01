@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="mvc/views/style.css">
         <title>Restaurants</title>
     </head>
     <body>
@@ -41,14 +42,16 @@ and open the template in the editor.
         
         
          <h3>Add Restaurant</h3>
+         <div class="frmInput">
         <form action="#" method="post">
-            <label>Restaurant Name:</label> 
+            <label>Restaurant Name:</label> <br />
             <input type="text" name="restaurant_name" value="<?php echo $restaurant_name; ?>" placeholder="" /><br />
-            <label>Location</label>
+            <label>Location:</label><br />
             <input type="text" name="location" value="<?php echo $location; ?>" />
             <input type="hidden" name="action" value="create" /><br />
             <input type="submit" value="Submit" />
         </form>
+         </div>
          <br />
          <br />
          

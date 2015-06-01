@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="mvc/views/style.css">
         <meta charset="UTF-8">
         <title>Main Page</title>
     </head>
     <body>
-        Choose your choice
+        <h1>Choose your choice</h1>
         <?php
-        // put your code here
-        
-        //var_dump($scope->view);
+        // Put code here
         
         
         ?>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="mvc/views/style.css">
         <title>Restaurant Edit</title>
     </head>
     <body>
@@ -28,22 +29,25 @@
         ?>
         
         <h3>Edit Restaurant</h3>
+        <div class="frmInput">
         <form action="#" method="post">
-            <label>Restaurant Name:</label> 
+            <label>Restaurant Name:</label> <br />
             <input type="text" name="restaurant_name" value="<?php echo $restaurant_name; ?>" placeholder="" /><br />
-            <label>Location</label>
+            <label>Location:</label><br />
             <input type="text" name="location" value="<?php echo $location; ?>" />
             <input type="hidden" name="action" value="update" /><br />
             <input type="hidden"  name="restaurantid" value="<?php echo $restaurantid; ?>" />
             <input type="submit" value="Submit" />
         </form>
+        </div>
          <br />
          <br />
          
-        <form action="#" method="post">
+        <form action="#" method="post" class="frmAddPg">
             <input type="hidden" name="action" value="add" />
-            <input type="submit" value="ADD Page" /> 
+            <input type="submit" value="Back to Add Page" class="sbmtAdd"/> 
         </form>
+        <br />
          <?php
          
         

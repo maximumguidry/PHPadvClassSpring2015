@@ -1,10 +1,108 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : May 31, 2015, 8:04:30 PM
-    Author     : Beau
-*/
+body 
+{
+    background-color: linen;
+    font-family:  serif;
+    font-style: oblique;
+    color: brown;
+}
+
+h3
+{
+    font-size: 46px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav
+{
+    background-color: brown;
+    margin: auto;
+    height:  65px;
+    text-align: center;
+    font-size: 36px;
+    
+}
+
+nav a:visited
+{
+    color: khaki;
+    
+}
+
+a:visited
+{
+    
+    
+}
+
+
+nav a:link
+{
+   color: aliceblue; 
+    
+}
+
+nav a:hover
+{
+   color: linen;
+    
+}
+
+a:link
+{
+    
+    
+}
+
+table
+{
+    margin: 0 auto;
+    
+}
+
+th
+{
+    color: linen;
+    background-color: brown;
+}
+
+.frmInput
+{
+    width: 450px;    
+    //background-color: white;
+    margin: 0 auto;
+}
+
+.frmAddPg
+{
+    width: 200px;
+    margin: 0 auto;
+    background: none;
+    border: none; 
+    padding: 0;
+    font: inherit;
+    color: blue;
+    /*border is optional*/
+    //border-bottom:1px solid #444; 
+    cursor: pointer;
+}
+
+.sbmtAdd
+{
+    width: 200px;
+    margin: 0 auto;
+    background: none;
+    border: none; 
+    padding: 0;
+    font: inherit;
+    /*border is optional*/
+    color: blue;
+    border-bottom:1px solid #444; 
+    cursor: pointer;
+}
+
+input
+{
+    
+}
 

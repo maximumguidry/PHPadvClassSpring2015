@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="mvc/views/style.css">
         <title>Items</title>
     </head>
     <body>
@@ -48,25 +49,25 @@
         <h3>Add Dish</h3>
         
         
-        
-        <form action="#" method="post" name="frmItems">
-            <label>Item:</label>            
+        <div class="frmInput">
+        <form action="#" method="post">
+            <label>Item:</label> <br />           
             <input type="text" name="name" value="<?php echo $name; ?>" placeholder="" />
             <br />
             
-            <label>Type:</label>            
+            <label>Type:</label> <br />           
             <input type="text" name="type" value="<?php echo $type; ?>" placeholder="" />
             <br />
             
-            <label>Beverage:</label>
+            <label>Beverage:</label> <br />
             <input type="number" max="1" min="0" name="beverage" value="<?php echo $beverage; ?>" />
             <br />
             
-            <label>Spicy:</label>
+            <label>Spicy:</label><br />
             <input type="number" max="1" min="0" name="spicy" value="<?php echo $spicy; ?>" />
             <br />
             
-            <label>Rating:</label>
+            <label>Rating(1-5):</label><br />
             <input type="number" max="5" min="1" name="rating" value="<?php echo $rating; ?>" />
             <br />
             
@@ -92,6 +93,7 @@
             <input type="hidden" name="action" value="create" />
             <input type="submit" value="Submit" />
         </form>
+        </div>
 
         
          <br />
