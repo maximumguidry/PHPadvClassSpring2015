@@ -13,7 +13,17 @@
         </nav>
         <?php
         // put your code here
-                
+        if ( !$scope->util->isLoggedin() ) {
+                $scope->util->redirect('login.php');
+            } 
+            else {
+                echo('<form action="#" method="post" class="frmAddPg">
+            <input type="hidden" name="action" value="sessionDestroy" />
+            <input type="submit" value="Log Out" class="sbmtAdd"/> 
+        </form>');
+            }        
+        
+        
          if ( $scope->util->isPostRequest() ) {
              
              if ( isset($scope->view['errors']) ) {

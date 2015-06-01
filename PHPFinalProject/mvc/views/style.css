@@ -20,6 +20,11 @@ h2
     text-align: center;
 }
 
+p{
+    margin: 0 auto;
+    text-align: center;
+}
+
 
 
 #aMainLinks
@@ -56,6 +61,7 @@ nav
     height:  65px;
     text-align: center;
     font-size: 36px;
+    padding: 10px;
     
 }
 

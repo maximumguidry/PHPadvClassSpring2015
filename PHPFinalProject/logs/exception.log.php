@@ -35,3 +35,8 @@
 [556483661430d]	[exception]	[05-26-2015 4:29pm]	Controller for page "restaurants" failed
 [556504cb53e00]	[exception]	[05-27-2015 1:42am]	Controller for page "items" failed
 [556b93919a692]	[exception]	[06-01-2015 1:04am]	Controller for page "items" failed
+[556cc0c77ec3d]	[exception]	[06-01-2015 10:29pm]	Controller for page "signup" failed
+[556cc6a557cc3]	[exception]	[06-01-2015 10:55pm]	Scope variable  not found or set.
+[556cce62cc44a]	[exception]	[06-01-2015 11:28pm]	Controller for page "signup" failed
+[556cce687f45c]	[exception]	[06-01-2015 11:28pm]	Controller for page "login" failed
+[556ccf9b28494]	[exception]	[06-01-2015 11:33pm]	Controller for page "login" failed

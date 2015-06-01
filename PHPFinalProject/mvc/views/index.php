@@ -11,9 +11,16 @@
         <br />
         <h2>What would you like to add or edit?</h2>
         <hr />
+        
         <?php
         // Put code here
-        
+        if ( !$scope->util->isLoggedin() ) {
+               echo("<p>*You are not logged in.*</p>".
+                       "<p>*You must be logged in to perform database operations.*</p>");
+            } 
+            else {
+                echo('<p>*You are logged in.*</p>');
+            }
         
         ?>
         <br />
@@ -21,6 +28,8 @@
             <span id="spMainlinks">
                 <a href="restaurants">Restaurants</a> <br />
                 <a href="items">Dishes and Items</a> <br />
+                <a href="login.php">Log in</a> <br />
+                <a href="signup.php">Sign up</a> <br />
             </span>
         </div>
         

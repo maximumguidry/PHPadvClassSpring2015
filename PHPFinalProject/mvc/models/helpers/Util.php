@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\models\services;
 
 use App\models\interfaces\IService;
@@ -79,5 +77,15 @@ class Util implements IService {
     */    
     public function isGetRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'GET' );
+    }
+    
+    //checks whether user is logged in returning true if they are
+    public function isLoggedin() {
+        return ( isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true );
+    }
+    
+    //sets loggedin to true
+    public function setLoggedin($value) {
+        $_SESSION['loggedin'] = $value;
     }
 }

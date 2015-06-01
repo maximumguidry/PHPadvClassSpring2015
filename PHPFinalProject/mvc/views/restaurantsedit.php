@@ -14,6 +14,16 @@
         <?php
         // put your code here
         //echo var_dump($scope);
+        if ( !$scope->util->isLoggedin() ) {
+                $scope->util->redirect('login.php');
+            } 
+            else {
+                echo('<form action="#" method="post" class="frmAddPg">
+            <input type="hidden" name="action" value="sessionDestroy" />
+            <input type="submit" value="Log Out" class="sbmtAdd"/> 
+        </form>');
+            }
+        
         
          if ( isset($scope->view['updated']) ) {
             if( $scope->view['updated'] ) {        

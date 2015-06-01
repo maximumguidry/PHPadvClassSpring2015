@@ -31,4 +31,5 @@ class IndexController extends BaseController implements IController {
         return $this->view('index',$scope);
     }
     
+    
 }

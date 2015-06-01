@@ -44,6 +44,11 @@ class RestaurantController extends BaseController implements IController {
             if ( $scope->util->getAction() == 'delete' ) {                
                 $this->data["deleted"] = $this->service->delete($scope->util->getPostParam('restaurantid'));
             }
+            
+            if ( $scope->util->getAction() == 'sessionDestroy' ) {                
+                session_destroy();
+                 $scope->util->redirect('login.php');
+            }
                        
         }
         
