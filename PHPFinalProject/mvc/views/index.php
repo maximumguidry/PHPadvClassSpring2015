@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Main Page</title>
     </head>
     <body>
         Choose your choice

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Items</title>
+        <title>Items Edit</title>
     </head>
     <body>
         <nav>
@@ -13,25 +13,13 @@
         <?php
         // put your code here
                 
-         if ( $scope->util->isPostRequest() ) {
-             
-             if ( isset($scope->view['errors']) ) {
-                //print_r($scope->view['errors']);
-                 foreach($scope->view['errors'] as $errors){
-                     echo "*" . $errors . "<br />";
-                     
-                 }
-             }
-             
-             if ( isset($scope->view['saved']) && $scope->view['saved'] ) {
-                  echo 'Dish Added';
-             }
-             
-             if ( isset($scope->view['deleted']) && $scope->view['deleted'] ) {
-                  echo 'Dish deleted';
-             }
-             
-         }
+        if ( isset($scope->view['updated']) ) {
+            if( $scope->view['updated'] ) {        
+                 echo 'Item Updated';
+            } else {
+                 echo 'Item NOT Updated';
+            }                 
+        }
         
             $name = $scope->view['model']->getName();
             $type = $scope->view['model']->getType();
@@ -45,7 +33,7 @@
             
         ?>
         
-        <h3>Add Dish</h3>
+        <h3>Edit Dish</h3>
         
         
         
@@ -89,13 +77,19 @@
             ?>
             </select>
              <br /><br />
-            <input type="hidden" name="action" value="create" />
+            <input type="hidden" name="action" value="update" />
+            <input type="hidden"  name="itemid" value="<?php echo $itemid; ?>" />
             <input type="submit" value="Submit" />
         </form>
 
         
          <br />
          <br />
+        <form action="#" method="post" >
+            <input type="hidden" name="action" value="add" />
+            <input type="submit" value="ADD Page" /> 
+        </form>
+        <br />
         
          <?php 
          

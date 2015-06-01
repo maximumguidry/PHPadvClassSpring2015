@@ -79,7 +79,7 @@ class ItemDAO extends BaseDAO implements IDAO {
                           ":beverage" => $model->getBeverage(),
                           ":spicy" => $model->getSpicy(),
                           ":restaurantid" => $model->getRestaurantid(),
-                          ":itemid" => $model->getId()
+                          ":itemid" => $model->getItemId()
                     );
          
                 

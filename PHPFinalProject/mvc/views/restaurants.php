@@ -10,7 +10,11 @@ and open the template in the editor.
         <title>Restaurants</title>
     </head>
     <body>
-        
+        <nav>
+            <a href="index.php">Index</a>
+            <a href="restaurants">Restaurants</a>
+            <a href="items">Dishes and Items</a>
+        </nav>
         <?php
         // put your code here
           
@@ -48,10 +52,6 @@ and open the template in the editor.
          <br />
          <br />
          
-        <form action="#" method="post">
-            <input type="hidden" name="action" value="add" />
-            <input type="submit" value="ADD Page" /> 
-        </form>
          <?php
          
         

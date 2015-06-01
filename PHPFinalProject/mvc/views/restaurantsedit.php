@@ -5,6 +5,11 @@
         <title>Restaurant Edit</title>
     </head>
     <body>
+        <nav>
+            <a href="index.php">Index</a>
+            <a href="restaurants">Restaurants</a>
+            <a href="items">Dishes and Items</a>
+        </nav>
         <?php
         // put your code here
         //echo var_dump($scope);
