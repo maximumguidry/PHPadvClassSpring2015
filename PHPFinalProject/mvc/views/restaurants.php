@@ -17,8 +17,7 @@ and open the template in the editor.
             <a href="items">Dishes and Items</a>
         </nav>
         <?php
-        // put your code here
-        
+        //checks if logged in and redirects to the login page if not
         if ( !$scope->util->isLoggedin() ) {
                 $scope->util->redirect('login.php');
             } 
@@ -28,13 +27,16 @@ and open the template in the editor.
             <input type="submit" value="Log Out" class="sbmtAdd"/> 
         </form>');
             }
-          
+          //if something is being posted when a user submits
          if ( $scope->util->isPostRequest() ) {
-             
+             //gracefully displays errors 
              if ( isset($scope->view['errors']) ) {
-                print_r($scope->view['errors']);
+                foreach($scope->view['errors'] as $errors){
+                     echo "<p>*" . $errors . "</p>";
+                     
+                 }
              }
-             
+             //if the a record was saved or deleted in the database it displays a corresponding message
              if ( isset($scope->view['saved']) && $scope->view['saved'] ) {
                   echo 'Restaurant Added';
              }
@@ -44,7 +46,7 @@ and open the template in the editor.
              }
              
          }
-        //Will need to set up DO first
+        //gets the properties of a restaurant
          $restaurant_name = $scope->view['model']->getRestaurant_name();
          $location = $scope->view['model']->getLocation();
         
@@ -68,12 +70,12 @@ and open the template in the editor.
          
          <?php
          
-        
+         //says no data if no data is in the scope view based on the getAllRows() function called in the Controller
           if ( count($scope->view['restaurants']) <= 0 ) {
             echo '<p>No Data</p>';
         } else {
             
-            
+            //creates a table based on the rows returned
              echo '<table border="1" cellpadding="5"><tr><th>Restaurant Name</th><th>Location</th><th></th><th></th></tr>';
              foreach ($scope->view['restaurants'] as $value) {
                 echo '<tr>';

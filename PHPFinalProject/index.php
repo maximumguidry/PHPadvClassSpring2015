@@ -13,16 +13,18 @@ use Exception;
     protected $DI = array();
     protected $log = null;
 
-     
+    //gets the log to be used for error logging and whatnot 
     protected function getLog() {
         return $this->log;
     }
 
+    //sets the log to be used for error logging and whatnot
     public function setLog(ILogging $log) {       
         $this->log = $log;
     }
      
-     public function addDIController($page, $func) {
+    //a function that gets the name of the controller based on what the 
+    public function addDIController($page, $func) {
          $this->DI[$this->getPageController($page)] = $func;
          return $this;
      }
@@ -96,10 +98,10 @@ use Exception;
          * Class loader.
          */
         public function loadClass($base) {
-            
+            //sets the base file path to add files to
             $baseName = explode( '\\', $base );
             $className = end( $baseName );     
-            
+            //makes an array of folders where all model and controller files are stored
             $folders = array(   "mvc".DIRECTORY_SEPARATOR."controllers",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."helpers",
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."dao",
@@ -109,7 +111,7 @@ use Exception;
                                 "mvc".DIRECTORY_SEPARATOR."models".DIRECTORY_SEPARATOR."services"
                             );
             $classFile = FALSE;
-            
+            //adds a class name to each folder in the folders array
             foreach($folders as $folder) {
                 $classFile = $folder.DIRECTORY_SEPARATOR.$className.'.php';                
                 if ( is_dir($folder) &&  file_exists( $classFile ) ) {
@@ -120,7 +122,7 @@ use Exception;
              
         }
               
-
+        //gets the name of the page.  It it's not set, it sets the page to index
         protected function getPage() {
             $page = filter_input(INPUT_GET, 'page');            
             if ( NULL === $page || $page === FALSE ) {
@@ -129,10 +131,11 @@ use Exception;
             return $this->checkPage($page);
         }
         
+        //gets the controller based on the name of the page
         protected function getPageController($page) {
             return ucfirst(strtolower($page)).'Controller';
         }
-
+        //checks to make sure the page is a valid value
         protected function checkPage($page) {            
             if ( !( is_string($page) && preg_match('/^[a-z0-9-]+$/i', $page) != 0 ) ) {
                 // TODO log attempt, redirect attacker, ...
@@ -199,7 +202,7 @@ use Exception;
         $_itemService = new ItemService($_itemDAO, $_restaurantService, $_validator, $_itemmodel);
         
         //http://php.net/manual/en/functions.anonymous.php
-
+        
         $index->addDIController('index', function() {            
             return new \APP\controller\IndexController();
         })
