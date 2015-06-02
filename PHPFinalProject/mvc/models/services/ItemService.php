@@ -15,12 +15,15 @@ use App\models\interfaces\IModel;
  *
  * @author 001332825
  */
+//declares the item service class
 class ItemService implements IService{
-    protected $ItemDAO; 
-    protected $restaurantService;
+     //needs a Database Access Object, validator, and model
+     //plus it needs the restaurant service to get restaurant name instead of just the id
+     protected $ItemDAO; 
+     protected $restaurantService;
      protected $validator;
      protected $model;
-             
+    //getters and setters for the objects         
      function getValidator() {
          return $this->validator;
      }
@@ -55,7 +58,7 @@ class ItemService implements IService{
      }
 
      
-     
+    //constructor with the dependancy injection for ItemDAO restaurantService, validator, and model 
     public function __construct(IDAO $ItemDAO, IService $restaurantService, IService $validator, IModel $model  ) {
         $this->setItemDAO($ItemDAO);
         $this->setRestaurantService($restaurantService);
@@ -63,28 +66,28 @@ class ItemService implements IService{
         $this->setModel($model);
     }
     
-    
+    //gets all rows from the restaurant table by using the function in the DAO
     public function getAllRestaurants() {       
         return $this->getRestaurantService()->getAllRows();   
     }
-    
+    //gets all rows in the item table by using the function in the DAO
      public function getAllItems() {       
         return $this->getItemDAO()->getAllRows();   
         
     }
-    
+    //checks to make sure the id exists by using the function in the DAO
     public function idExist($id) {
         return $this->getItemDAO()->idExisit($id);
     }
-    
+    //selects a row by id by using the function in the DAO
     public function read($id) {
         return $this->getItemDAO()->read($id);
     }
-    
+    //deletes a row by id by using the function in the DAO
     public function delete($id) {
         return $this->getItemDAO()->delete($id);
     }
-    
+    //creates a record row by using the function in the DAO
     public function create(IModel $model) {
         
         if ( count($this->validate($model)) === 0 ) {
@@ -103,7 +106,8 @@ class ItemService implements IService{
     
     public function validate( IModel $model ) {
         $errors = array();
-        //NOTE:  Need to get validator stuff done
+        //calls the validator functions to make sure the values of the model are valid
+        //adding an element to the errors array for any invalid values
         if ( !$this->getValidator()->itemIsValid($model->getName()) ) {
             $errors[] = 'Item name is invalid';
         }       
@@ -122,10 +126,10 @@ class ItemService implements IService{
         if ( !$this->getValidator()->ratingIsValid($model->getRating()) ) {
             $errors[] = 'Rating is invalid';
         }  
-        
+        //returns the errors array
         return $errors;
     }
-    
+    //creates a clone of the item model
     public function getNewItemModel() {
         return clone $this->getModel();
     }
