@@ -12,8 +12,7 @@
             <a href="items">Dishes and Items</a>
         </nav>
         <?php
-        // put your code here
-        //echo var_dump($scope);
+        //checks to make sure a user is logged in before accessing database operations
         if ( !$scope->util->isLoggedin() ) {
                 $scope->util->redirect('login.php');
             } 
@@ -32,10 +31,11 @@
                  echo 'Restaurant NOT Updated';
             }                 
         }
-        
+            //needs the restaurant id passed from the edit button press
             $restaurantid = $scope->view['model']->getRestaurantid();
             $restaurant_name = $scope->view['model']->getRestaurant_name();
             $location = $scope->view['model']->getLocation();
+            
         ?>
         
         <h3>Edit Restaurant</h3><hr /><br />
