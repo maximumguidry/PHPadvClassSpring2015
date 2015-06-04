@@ -40,9 +40,7 @@
             $spicy = $scope->view['model']->getSpicy();
             $restaurantid = $scope->view['model']->getRestaurantid();
             $itemid = $scope->view['model']->getItemid();
-            
-            var_dump($scope->view['model']);
-            
+                        
             
         ?>
         
