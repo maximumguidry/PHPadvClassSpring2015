@@ -41,6 +41,8 @@
             $restaurantid = $scope->view['model']->getRestaurantid();
             $itemid = $scope->view['model']->getItemid();
             
+            var_dump($scope->view['model']);
+            
             
         ?>
         
@@ -76,7 +78,7 @@
             <label>Restaurant:</label>
             <select name="restaurantid">
             <?php 
-            
+                
                 foreach ($scope->view['restaurants'] as $value) {
                     if ( $value->getRestaurantid() == $restaurantid ) {
                         echo '<option value="',$value->getRestaurantid(),'" selected="selected">',$value->getRestaurant_name(),'</option>';  

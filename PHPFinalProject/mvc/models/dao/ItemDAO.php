@@ -31,7 +31,7 @@ class ItemDAO extends BaseDAO implements IDAO {
          
          $db = $this->getDB();
          
-         $stmt = $db->prepare("SELECT items.itemid, items.name, items.type, items.rating, items.comments, items.beverage, items.spicy, restaurants.restaurant_name as restaurant_name FROM items LEFT JOIN restaurants on items.restaurantid = restaurants.restaurantid where itemid = :itemid;");
+         $stmt = $db->prepare("SELECT items.itemid, items.name, items.type, items.rating, items.comments, items.beverage, items.spicy, items.restaurantid, restaurants.restaurant_name as restaurant_name FROM items LEFT JOIN restaurants on items.restaurantid = restaurants.restaurantid where itemid = :itemid;");
          
          if ( $stmt->execute(array(':itemid' => $id)) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetch(PDO::FETCH_ASSOC);
