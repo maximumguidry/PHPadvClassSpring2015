@@ -7,6 +7,11 @@
         <title>Signup</title>
     </head>
     <body>
+        <nav>
+            <a href="index.php">Index</a>
+            <a href="restaurants">Restaurants</a>
+            <a href="items">Dishes and Items</a>
+        </nav>
         <?php
             //needs the util helper for checking post request
             $util = new Util();

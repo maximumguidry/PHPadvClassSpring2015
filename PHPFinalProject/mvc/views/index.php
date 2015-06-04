@@ -20,8 +20,12 @@
             } 
             else {
                 echo('<p>*You are logged in.*</p>');
+                echo('<form action="#" method="post" class="frmAddPg">
+            <input type="hidden" name="action" value="sessionDestroy" />
+            <input type="submit" value="Log Out" class="sbmtAdd"/> 
+            </form>');
             }
-        
+            
         ?>
         <br />
         <div id="aMainLinks">
